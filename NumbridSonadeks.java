@@ -7,47 +7,55 @@ public class NumbridSonadeks{
                 "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
 
         //while(true){  KUIDAS MA SAAN NII, ET SCÄNNER EI NUSSIKS???
+        while (true) {
+            //väljastan suvalise arvu 0-9-ni
+            int arv = (int) Math.round(Math.random() * 9 + 0);
+            System.out.println("Number: " + arv);
 
-        //väljastan suvalise arvu 0-9-ni
-        int arv = (int) Math.round(Math.random() * 9 + 0);
-        System.out.println("Number: " + arv);
+            //küsin kasutajalt, mis tähega on tegu
+            Scanner scan = new Scanner(System.in);
+            System.out.print("Sisesta täht: ");
+            String taht = scan.nextLine();
 
-        //küsin kasutajalt, mis tähega on tegu
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Sisesta täht: ");
-        String taht = scan.nextLine();
-        scan.close();
 
-        //anname võimaluse programmist ka lahkuda
-        if(taht.equals("EXIT"))
 
-        //kontrollin, kas on õige või vale
-            if (taht.equals("n")) {
-                Foneetiline.kontrollEsimene(Peaklass.nul, taht, arv);
-            } else if (taht.equals("l")) {
-                Foneetiline.kontrollEsimene(Peaklass.one, taht, arv);
-            } else if (taht.equals("k") || taht.equals("g")) {
-                Foneetiline.kontrollEsimene(Peaklass.two, taht, arv);
-            } else if (taht.equals("m")) {
-                Foneetiline.kontrollEsimene(Peaklass.three, taht, arv);
-            } else if (taht.equals("t")) {
-                Foneetiline.kontrollEsimene(Peaklass.four, taht, arv);
-            } else if (taht.equals("v") || taht.equals("w") || taht.equals("f")) {
-                Foneetiline.kontrollEsimene(Peaklass.five, taht, arv);
-            } else if (taht.equals("b") || taht.equals("p")) {
-                Foneetiline.kontrollEsimene(Peaklass.six, taht, arv);
-            } else if (taht.equals("s")) {
-                Foneetiline.kontrollEsimene(Peaklass.seven, taht, arv);
-            } else if (taht.equals("r")) {
-                Foneetiline.kontrollEsimene(Peaklass.eight, taht, arv);
-            } else if (taht.equals("j") || taht.equals("h") || taht.equals("d")) {
-                Foneetiline.kontrollEsimene(Peaklass.nine, taht, arv);
-            }
-        else{
+
+            //anname võimaluse programmist ka lahkuda
+            if (!taht.equals("EXIT")){
+                //kontrollin, kas on õige või vale
+                if (arv == 0) {
+                    Peaklass.nul.kontrollEsimene(taht, arv);
+                } else if (arv == 1) {
+                    Peaklass.one.kontrollEsimene(taht, arv);
+                } else if (arv == 2) {
+                    Peaklass.two.kontrollEsimene(taht, arv);
+                } else if (arv==3) {
+                    Peaklass.three.kontrollEsimene(taht, arv);
+                } else if (arv==4) {
+                    Peaklass.four.kontrollEsimene(taht, arv);
+                } else if (arv==5) {
+                    Peaklass.five.kontrollEsimene(taht, arv);
+                } else if (arv==6) {
+                    Peaklass.six.kontrollEsimene(taht, arv);
+                } else if (arv==7) {
+                    Peaklass.seven.kontrollEsimene(taht, arv);
+                } else if (arv==8) {
+                    Peaklass.eight.kontrollEsimene(taht, arv);
+                } else if (arv==9) {
+                    Peaklass.nine.kontrollEsimene(taht, arv);
+                }else{
+                    System.out.println("Sisestasid midagi hoopis valesti");
+                }
+        }else {
                 System.out.println("Tubli, et harjutasid!");
-                //break;   ET WHILE TSÜKKLIT LÕPETADA!
+                scan.close();
+                break;
             }
+
+        }
+
     }
+
     public static void tase2() {
         System.out.println("Harjutame kirjutama sõnu, mis sisaldavad õigeid tähti!" + "\n" +
                 "Kõigepealt sõnad, mis sisaldavad vaid ühte foneetilist tähte. " + "\n" +
@@ -69,34 +77,33 @@ public class NumbridSonadeks{
        if (sona.length() > 1) {
         boolean v = true;
             for (int i = 0;i< sona.length(); i++ ){
-                String[] q = sona;
-                String taht = sona.copyValueOf(q.);
-                if (taht.equals("n")) {
-                    if (taht.equals("n")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.nul, taht, arv);
-                    } else if (taht.equals("l")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.one, taht, arv);
-                    } else if (taht.equals("k") || taht.equals("g")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.two, taht, arv);
-                    } else if (taht.equals("m")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.three, taht, arv);
-                    } else if (taht.equals("t")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.four, taht, arv);
-                    } else if (taht.equals("v") || taht.equals("w") || taht.equals("f")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.five, taht, arv);
-                    } else if (taht.equals("b") || taht.equals("p")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.six, taht, arv);
-                    } else if (taht.equals("s")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.seven, taht, arv);
-                    } else if (taht.equals("r")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.eight, taht, arv);
-                    } else if (taht.equals("j") || taht.equals("h") || taht.equals("d")) {
-                        v = Foneetiline.kontrollTeine(Peaklass.nine, taht, arv);
+                String taht = sona.substring(i, i+1);
+                if (taht.contains("nlkgmtfvwpbsrjhd") || !v) {
+                    if (arv==0) {
+                        v = Peaklass.nul.kontrollTeine(taht, arv);
+                    } else if (arv==1) {
+                        v = Peaklass.one.kontrollTeine(taht, arv);
+                    } else if (arv==2) {
+                        v = Peaklass.two.kontrollTeine(taht, arv);
+                    } else if (arv==3) {
+                        v = Peaklass.three.kontrollTeine(taht, arv);
+                    } else if (arv==4) {
+                        v = Peaklass.four.kontrollTeine(taht, arv);
+                    } else if (arv==5) {
+                        v = Peaklass.five.kontrollTeine(taht, arv);
+                    } else if (arv==6) {
+                        v = Peaklass.six.kontrollTeine(taht, arv);
+                    } else if (arv==7) {
+                        v = Peaklass.seven.kontrollTeine(taht, arv);
+                    } else if (arv==8) {
+                        v = Peaklass.eight.kontrollTeine(taht, arv);
+                    } else if (arv==9) {
+                        v = Peaklass.nine.kontrollTeine(taht, arv);
                     }
 
                 }
                 //kontrollin, kas harjutaja sisestas õigesti!
-                if (v == true){
+                if (v){
                     System.out.println("Õige!");
                 }
                  else{

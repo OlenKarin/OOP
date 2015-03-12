@@ -11,11 +11,13 @@ public class Peaklass {
     static Foneetiline six = new Foneetiline("p,b",6);
     static Foneetiline seven = new Foneetiline("s",7);
     static Foneetiline eight = new Foneetiline("r",8);
-    static Foneetiline nine = new Foneetiline("j,h,d",0);
+    static Foneetiline nine = new Foneetiline("j,h,d",9);
+
 
     public static void main(String[] args){
-            NumbridSonadeks.tase1();
+        NumbridSonadeks.tase1();
 
     }
+
 
 }
