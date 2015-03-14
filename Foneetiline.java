@@ -25,10 +25,9 @@ public class Foneetiline {
 
 //meetot kontrollimaks, kas täht ja number on vastavuses - tagastatakse õige täht
     public void kontrollEsimene(String taht, int arv) {
-        if (T.contains(taht) && arv == N) {
+        if (T.contains(taht.toLowerCase()) && arv == N) {
             System.out.println("Õige!");
         } else {
-            System.out.println(this);
             System.out.println("Vale! Õige on " + T);
         }
     }
