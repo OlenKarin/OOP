@@ -31,8 +31,4 @@ public class Foneetiline {
             System.out.println("Vale! Õige on " + T);
         }
     }
-
-    public String toString() {
-        return "T = "+T+" N= "+N;
-    }
 }

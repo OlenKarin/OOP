@@ -9,6 +9,7 @@ public class NumbridSonadeks {
         //while(true){  KUIDAS MA SAAN NII, ET SCÄNNER EI NUSSIKS???
         while (true) {
             //väljastan suvalise arvu 0-9-ni
+            System.out.println();
             int arv = (int) Math.round(Math.random() * 9 + 0);
             System.out.println("Number: " + arv);
 
@@ -58,6 +59,7 @@ public class NumbridSonadeks {
 
         while (true) {
             //väljastan suvalise arvu 0-9-ni
+            System.out.println();
             int arv = (int) Math.round(Math.random() * 9 + 0);
             System.out.println("Number: " + arv);
 
@@ -105,6 +107,7 @@ public class NumbridSonadeks {
 
         while (true) {
             //väljastan suvalise arvu 0-9-ni
+            System.out.println();
             int arv1 = (int) Math.round(Math.random() * 8 + 1);
             int arv2 = (int) Math.round(Math.random() * 9 + 0);
             String number = String.valueOf(arv1) + String.valueOf(arv2);

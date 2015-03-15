@@ -47,30 +47,44 @@ public class Peaklass {
                 "õppimise ja harjutamise keskkonda! :) ");
         Scanner scan = new Scanner(System.in);
         System.out.print("Soovite tutvuda õpetusega? (jah-1/ei-2): ");
-        int vastus = scan.nextInt();
-        if(vastus==1){
+        String vastus = scan.nextLine();
+        if(vastus.equals("jah")){
             //õpetuse saamise asi
+        }else {
+            System.out.println("Hästi! Järgmisena liigume harjutamise juurde. ");
         }
-        scan.close();
-        System.out.println("Hästi! Järgmisena liigume harjutamise juurde. ");
-
         while(true) {
-            Scanner scan1 = new Scanner(System.in);
-            System.out.print("Valige harjutamise TASE (1,2,3) või kui soovite lõpetada (4): ");
+            System.out.println();
+            System.out.print("Valige harjutamise TASE (1,2,3,4) või kui soovite lõpetada (5): ");
             int tase = scan.nextInt();
-            switch (tase) {
-                case 1:
-                    NumbridSonadeks.tase1(soovitus);
-                case 2:
-                    NumbridSonadeks.tase2(soovitus);
-                case 3:
-                    NumbridSonadeks.tase3(soovitus);
-                case 4:
-                    System.out.println("Tubli töö!");
-                    scan1.close();
-            }
-        }
 
+                if(tase==1) {
+                    System.out.println();
+                    System.out.println();
+                    NumbridSonadeks.tase1(soovitus);
+                }
+                else if(tase==2) {
+                    System.out.println();
+                    System.out.println();
+                    NumbridSonadeks.tase2(soovitus);
+                }
+                else if(tase==3) {
+                    System.out.println();
+                    System.out.println();
+                    NumbridSonadeks.tase3(soovitus);
+                }
+                else if(tase==4) {
+                    System.out.println();
+                    System.out.println();
+                    Numbristik.jätaMeelde();
+                } else{
+                    System.out.println();
+                    System.out.println("Tubli töö!");
+                    scan.close();
+                    break;
+            }
+
+        }
 
 
 

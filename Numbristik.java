@@ -1,145 +1,50 @@
-import sun.font.TrueTypeFont;
 
 /**
  * Created by Karin on 9.03.2015.
  */
+import java.util.Scanner;
 
-/*public class Numbristik extends Peaklass {
-    /*public static void main(String[] args) {
-        kontrollEsimene("m", 3);
-        System.out.println(kontrollTeine("m",3));
-    }*/
-   /* public static void kontrollEsimene(String taht, int arv) {
-        if (taht.equals("n")) {
-            if (nul.getT().contains(taht) && arv == nul.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + nul.getT());
-            }
-        } else if (taht.equals("l")) {
-            if (one.getT().contains(taht) && arv == one.getN()) {
-                System.out.println("Õige!");
+public class Numbristik{
+    //meetod pikkade numbrite päheõppimise harjutamiseks
+    public static void jätaMeelde(){
+        System.out.println("Oled jõudnud numbrite meelde jätmise tasemeni. Anname sulle ette ühe" +
+                "ja pika arvu, mille saad eelnevalt õpitud meetodeid kasutades meelde jätta. " +
+                "Pähe õppimise aega saad sa ise reguleerida, vajutades Enterit." +
+                "Numbri ilmumise hetkest hakkab tiksuma aeg. Arvu meelde jätmiseks kulunud aeg" +
+                " näitabki Sinu arengut. Mõnusat elamust!" +
+                "Kui enam harjutada ei soovi, siis sisesta 0.");
+        Scanner scan1 = new Scanner(System.in);
+        while(true) {
+            long arv = (int) Math.round(Math.random() * 999999999 + 1000000000);
+            System.out.println("Number: " + arv);
+            long startAeg = System.currentTimeMillis();
 
-            } else {
-                System.out.println("Vale! Õige on "+one.getT());
-            }
-        } else if (taht.equals("k") || taht.equals("g")) {
-            if (two.getT().contains(taht) && arv == two.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + two.getT());
-            }
-        } else if (taht.equals("m")) {
-            if (three.getT().contains(taht) && arv == three.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + three.getT());
-            }
-        }else if (taht.equals("t")) {
-            if (four.getT().contains(taht) && arv == four.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + four.getT());
-            }
-        }else if (taht.equals("v")||taht.equals("w")|| taht.equals("f")) {
-            if (five.getT().contains(taht) && arv == five.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + five.getT());
-            }
-        }else if (taht.equals("b")||taht.equals("p")) {
-            if (six.getT().contains(taht) && arv == six.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + six.getT());
-            }
-        }else if (taht.equals("s")) {
-            if (seven.getT().contains(taht) && arv == seven.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + seven.getT());
-            }
-        }else if (taht.equals("r")) {
-            if (eight.getT().contains(taht) && arv == eight.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + eight.getT());
-            }
-        }else if (taht.equals("j")||taht.equals("h")||taht.equals("d")) {
-            if (nine.getT().contains(taht) && arv == nine.getN()) {
-                System.out.println("Õige!");
-            } else {
-                System.out.println("Vale! Õige on " + nine.getT());
-            }
-        }else{
-            System.out.println("Sisestasid sootuks vale tähe!");
-        }
+            System.out.println("Jätkamiseks vajuta ENTER");
+            String asi = scan1.nextLine();
 
-    }
-    /*public static  boolean kontrollTeine(String taht, int arv) {
-        if (taht.equals("n")) {
-            if (nul.getT().contains(taht) && arv == nul.getN()) {
-                return true;
-            } else {
-                return false;
+            for(int i=0;i<20;i++) {
+                System.out.println();
             }
-        } else if (taht.equals("l")) {
-            if (one.getT().contains(taht) && arv == one.getN()) {
-                return true;
-            } else {
-                return false;
 
-            }
-        } else if (taht.equals("k") || taht.equals("g")) {
-            if (two.getT().contains(taht) && arv == two.getN()) {
-                return true;
+            //küsin kasutajalt, mis numbriga on tegu
+
+            System.out.print("Sisesta number: ");
+            long number = scan1.nextLong();
+            long lopuAeg   = System.currentTimeMillis();
+            long aegKokku = lopuAeg - startAeg;
+
+            if (number != 0) {
+                if (arv == number) {
+                    System.out.println("Õige! :)");
+                } else {
+                    System.out.println("Kahjuks läks midagi valesti!");
+                }
+                System.out.println("Aega kulus: "+aegKokku);
+                System.out.println();
             } else {
-                return false;
+                System.out.println("Tubli, et harjutasid!");
+                break;
             }
-        } else if (taht.equals("m")) {
-            if (three.getT().contains(taht) && arv == three.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (taht.equals("t")) {
-            if (four.getT().contains(taht) && arv == four.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (taht.equals("v") || taht.equals("w") || taht.equals("f")) {
-            if (five.getT().contains(taht) && arv == five.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (taht.equals("b") || taht.equals("p")) {
-            if (six.getT().contains(taht) && arv == six.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (taht.equals("s")) {
-            if (seven.getT().contains(taht) && arv == seven.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (taht.equals("r")) {
-            if (eight.getT().contains(taht) && arv == eight.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (taht.equals("j") || taht.equals("h") || taht.equals("d")) {
-            if (nine.getT().contains(taht) && arv == nine.getN()) {
-                return true;
-            } else {
-                return false;
-            }
-        }else{
-            return false;
         }
     }
-}*/
+}
