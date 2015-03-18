@@ -16,7 +16,7 @@ public class Peaklass {
     static Foneetiline nine = new Foneetiline("j,h,d",9);
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         String[] soovitus = {"nui","luu","kuu","ma","Tai","vai","puu","sai","rai",
                 "jää","Lina, laine","Luule, leil","Luuk,leek, lõug",
                 "Liim, laama, leem","Laut, laat", "Liiv, laava, laev",
@@ -50,6 +50,14 @@ public class Peaklass {
         String vastus = scan.nextLine();
         if(vastus.equals("jah")){
             //õpetuse saamise asi
+            Õpetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/opetus_sissejuhatus.txt");
+            System.out.print("Edasi minemiseks vajuta ENTER");
+            String enter1 = scan.nextLine();
+            Õpetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/foneetiline_tahestik.txt");
+            System.out.print("Edasi minemiseks vajuta ENTER");
+            String enter2 = scan.nextLine();
+            Õpetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/numbrite_teisendamine.txt");
+
         }else {
             System.out.println("Hästi! Järgmisena liigume harjutamise juurde. ");
         }

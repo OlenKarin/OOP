@@ -1,4 +1,4 @@
-Mälu ja "konksude" ehk tugisõnade süsteem
+﻿Mälu ja "konksude" ehk tugisõnade süsteem
 Numbrite teisendamine sõnadeks
 
 Nüüd tead igale numbrile vastavat konsonati ja järgmisena vaatame, kuidas suvalist sõna numbriteks
@@ -27,8 +27,4 @@ ja nimekirjas oleva sõna vahel. Loendis on esimene 9 - purse ning järgmisena l
 "puu" ja sõna "purske" vahel. Näiteks, kuidas puust purskab välja vett. Samamoodi tuleb moodutstada seosed
 ka teiste numrile vastava tugisõna ja nimekirjas oleva sõna vahel. 
 
-Edasi õpi selgeks tugisõnad 11 - 25.
-11 - toit		15 - tool		19 - tuub		23 - nimi
-12 - tina		16- taju		20 - noos		24 - Nero
-13 - tuum		17 - tiik		21 - neet		25 - nael
-14 - tire		18 - tuvi		22 - nunn
+Edasi mõelda välja ja õppida selgeks tugisõnad 11 - 99.
