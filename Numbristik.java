@@ -15,12 +15,13 @@ public class Numbristik{
                 "Kui enam harjutada ei soovi, siis sisesta 0.");
         Scanner scan1 = new Scanner(System.in);
         while(true) {
+            String asi1 = scan1.nextLine();
             long arv = (int) Math.round(Math.random() * 999999999 + 1000000000);
             System.out.println("Number: " + arv);
             long startAeg = System.currentTimeMillis();
 
             System.out.println("Jätkamiseks vajuta ENTER");
-            String asi = scan1.nextLine();
+            String asi2 = scan1.nextLine();
 
             for(int i=0;i<20;i++) {
                 System.out.println();
@@ -41,6 +42,7 @@ public class Numbristik{
                 }
                 System.out.println("Aega kulus: "+aegKokku);
                 System.out.println();
+
             } else {
                 System.out.println("Tubli, et harjutasid!");
                 break;

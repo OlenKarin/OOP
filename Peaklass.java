@@ -50,13 +50,13 @@ public class Peaklass {
         String vastus = scan.nextLine();
         if(vastus.equals("jah")){
             //õpetuse saamise asi
-            Õpetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/opetus_sissejuhatus.txt");
+            Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/opetus_sissejuhatus.txt");
             System.out.print("Edasi minemiseks vajuta ENTER");
             String enter1 = scan.nextLine();
-            Õpetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/foneetiline_tahestik.txt");
+            Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/foneetiline_tahestik.txt");
             System.out.print("Edasi minemiseks vajuta ENTER");
             String enter2 = scan.nextLine();
-            Õpetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/numbrite_teisendamine.txt");
+            Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/numbrite_teisendamine.txt");
 
         }else {
             System.out.println("Hästi! Järgmisena liigume harjutamise juurde. ");
@@ -88,7 +88,6 @@ public class Peaklass {
                 } else{
                     System.out.println();
                     System.out.println("Tubli töö!");
-                    scan.close();
                     break;
             }
 

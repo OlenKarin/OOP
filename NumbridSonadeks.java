@@ -143,7 +143,6 @@ public class NumbridSonadeks {
                 System.out.println("sõnaks sobib: "+soovitus[Integer.parseInt(String.valueOf(arv1) + String.valueOf(arv2))]);
             }  else {
                 System.out.println("Aitäh, et harjutasid! :)");
-                scan.close();
                 break;
             }
 
