@@ -44,13 +44,13 @@ public class Peaklass {
 
         //Küsin kas soovitakse tutvuda õpetusega
         System.out.println("Tere! Olete sisenenud ühe äärmiselt kasuliku mälutehnika" +
-                "õppimise ja harjutamise keskkonda! :) ");
+                " õppimise ja harjutamise keskkonda! :) ");
         Scanner scan = new Scanner(System.in);
-        System.out.print("Soovite tutvuda õpetusega? (jah-1/ei-2): ");
+        System.out.print("Soovite tutvuda õpetusega? (jah/ei): ");
         String vastus = scan.nextLine();
         if(vastus.equals("jah")){
             //õpetuse saamise asi
-            Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/opetus_sissejuhatus.txt");
+            Opetus.instructions("src/opetus_sissejuhatus.txt");
             System.out.print("Edasi minemiseks vajuta ENTER");
             String enter1 = scan.nextLine();
             Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/foneetiline_tahestik.txt");
@@ -69,7 +69,7 @@ public class Peaklass {
                 if(tase==1) {
                     System.out.println();
                     System.out.println();
-                    NumbridSonadeks.tase1(soovitus);
+                    NumbridSonadeks.tase1();
                 }
                 else if(tase==2) {
                     System.out.println();
@@ -92,8 +92,6 @@ public class Peaklass {
             }
 
         }
-
-
 
 
 

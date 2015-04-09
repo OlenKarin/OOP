@@ -1,6 +1,3 @@
-/**
- * Created by Karin on 9.03.2015.
- */
 public class Foneetiline {
     private String T;
     private int N;
@@ -10,13 +7,13 @@ public class Foneetiline {
         N = n;
     }
 
-    public String getT() {
+    /*public String getT() {
         return T;
     }
 
     public int getN() {
         return N;
-    }
+    }*/
 
     //meetot kontrollimaks, kas täht ja number on vastavuses - tagastatakse tõeväärtus
     public boolean kontrollTeine(String taht, int arv) {

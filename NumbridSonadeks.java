@@ -1,8 +1,13 @@
 
 import java.util.Scanner;
 
+class SisendiViga extends Exception {
+    SisendiViga(String teade) {
+        super(teade);
+    }
+}
 public class NumbridSonadeks {
-    public static void tase1(String[] soovitus) {
+    public static void tase1() {
         System.out.println("Harjutame foneetilist tähestikku!" + "\n" +
                 "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
 
@@ -69,16 +74,13 @@ public class NumbridSonadeks {
             String sona = scan.nextLine();
 
             if (!sona.equals("EXIT")) { //anname võimaluse programmist ka lahkuda
-                boolean v = true;
+                boolean v;
                 if (sona.length() > 1) {
                     sona = sona.toLowerCase().replaceAll("[aceiouõüöäq]", "");
 
                     //kontrollin, kas sõna sisaldab piisavalt tähti
-                    if (sona.length() == 1) {
-                        v = taheÕigsus(arv, sona); //kontrollin, kas on täht õige või vale
-                    } else {
-                        v = false;
-                    }
+                    v = sona.length() == 1 && taheÕigsus(arv, sona);
+
                     if (v) {
                         System.out.println("Õige!");
                     } else {
@@ -119,25 +121,29 @@ public class NumbridSonadeks {
             String sona = scan.nextLine();
 
             if (!sona.equals("EXIT")) { //anname võimaluse programmist ka lahkuda
-                boolean v = true;
+                boolean v;
                 boolean k = true;
-                if (sona.length() > 1) {
-                    sona = sona.toLowerCase().replaceAll("[aceiouõüöäq]", "");
-                    String[] taht = sona.split("");
-                    //kontrollin, kas sõna sisaldab piisavalt tähti
-                    if (taht.length == 2) {
-                        v = taheÕigsus(arv1, taht[0]); //kontrollin, kas on täht õige või vale
-                        k = taheÕigsus(arv2, taht[1]);
+                try {
+                    if (sona.length() > 1) {
+                        sona = sona.toLowerCase().replaceAll("[aceiouõüöäq]", "");
+                        String[] taht = sona.split("");
+                        //kontrollin, kas sõna sisaldab piisavalt tähti
+                        if (taht.length == 2) {
+                            v = taheÕigsus(arv1, taht[0]); //kontrollin, kas on täht õige või vale
+                            k = taheÕigsus(arv2, taht[1]);
+                        } else {
+                            v = false;
+                        }
+                        if (v && k) {
+                            System.out.println("Õige!");
+                        } else {
+                            System.out.println("Vale!");
+                        }
                     } else {
-                        v = false;
+                        throw new SisendiViga("Sisestada tuleb sõna!");
                     }
-                    if (v&&k) {
-                        System.out.println("Õige!");
-                    } else {
-                        System.out.println("Vale!");
-                    }
-                } else {
-                    System.out.println("Sisestada tuleb sõna!");
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
                 }
                 //soovitus
                 System.out.println("sõnaks sobib: "+soovitus[Integer.parseInt(String.valueOf(arv1) + String.valueOf(arv2))]);
@@ -171,10 +177,8 @@ public class NumbridSonadeks {
             return Peaklass.seven.kontrollTeine(taht, arv);
         } else if (arv == 8) {
             return Peaklass.eight.kontrollTeine(taht, arv);
-        } else if (arv == 9) {
-            return Peaklass.nine.kontrollTeine(taht, arv);
-        }else{
-            return false;
+        } else  {
+            return arv == 9 && Peaklass.nine.kontrollTeine(taht, arv);
         }
     }
 }

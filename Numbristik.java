@@ -1,8 +1,10 @@
-
-/**
- * Created by Karin on 9.03.2015.
- */
 import java.util.Scanner;
+
+class ValesisendiViga extends Exception{
+    ValesisendiViga(String teade) {
+        super(teade);
+    }
+}
 
 public class Numbristik{
     //meetod pikkade numbrite päheõppimise harjutamiseks
@@ -35,14 +37,18 @@ public class Numbristik{
             long aegKokku = lopuAeg - startAeg;
 
             if (number != 0) {
-                if (arv == number) {
-                    System.out.println("Õige! :)");
-                } else {
-                    System.out.println("Kahjuks läks midagi valesti!");
-                }
-                System.out.println("Aega kulus: "+aegKokku);
-                System.out.println();
+                try {
+                    if (arv == number) {
+                        System.out.println("Õige! :)");
+                    } else {
+                        throw new ValesisendiViga("Kahjuks läks midagi valesti!");
+                    }
+                    System.out.println("Aega kulus: " + aegKokku);
+                    System.out.println();
 
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
             } else {
                 System.out.println("Tubli, et harjutasid!");
                 break;

@@ -3,15 +3,15 @@ Foneetiline tähestik
  
 "Konksude" ehk tugisõnade süsteem näitab, kuidas numbrite asemel esemeid loetleda. Selleks peab selgeks õppima
 foneetilise tähestiku, mis koosneb kümnest häälikust, kus iga numbrile (0 - 9) vastab erinev konsonant.
-1-le vastab T või D (üks püstine kriips).
-2-le vastab N (kaks püstist kriipsu).
-3-le vastab M (kolm püstist kriipsu).
-4-le vastab R (ruudul on neli külge).
-5-le vastab L (rooma number 50 on L).
-6-le vastab J.
-7-le vastab K ja G.
-8-le vastab V või F.
-9-le vastab P või B.
-0-le vastab S (sõna "sõõr" esimene täht). 
-Näiteks võib häälikud ja sellele vastava numbid meelde jätta lausega "TeeN MuRu LooJaK ViiBiS".
+1-le vastab L
+2-le vastab K,G.
+3-le vastab M
+4-le vastab T
+5-le vastab F,W,V
+6-le vastab P,B
+7-le vastab S
+8-le vastab R
+9-le vastab J,H,D
+0-le vastab N
+Näiteks võib häälikud ja sellele vastava numbid meelde jätta lausega "KaNa MuRu RaBa ViiS".
 Katseta, kuidas sulle numbrid ja nendele vastavad häälikud meelde jäid. 

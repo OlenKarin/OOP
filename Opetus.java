@@ -1,6 +1,3 @@
-/**
- * Created by Karin on 18.03.2015.
- */
 //Vajalike pakettide importimine
 import java.util.Scanner;
 public class Opetus {
