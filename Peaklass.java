@@ -1,6 +1,3 @@
-/**
- * Created by Karin on 9.03.2015.
- */
 import java.util.Scanner;
 
 public class Peaklass {
@@ -17,30 +14,6 @@ public class Peaklass {
 
 
     public static void main(String[] args) throws Exception{
-        String[] soovitus = {"nui","luu","kuu","ma","Tai","vai","puu","sai","rai",
-                "jää","Lina, laine","Luule, leil","Luuk,leek, lõug",
-                "Liim, laama, leem","Laut, laat", "Liiv, laava, laev",
-                "Luup, laup, leib","Leesi, loos","Loor, Laar, leer",
-                "Luud, lood, laud ","Kana, kaan, küna ","Keel, kaal, kiil, kali",
-                "Kiik, kook, köök","Kama","Koot, kuut","Kaev","Keep, kiip, kabe ",
-                "Köis, küüs, Kais", "Kari, kuur, karu ","Giid, gaid, koda ",
-                "Muna, miin ","Male, muul ","Mõõk, magu ","Muumia, maim ",
-                "Mõte","Movie","Amööb","Moos, mais ","Muru ","Madu, mood, muda ",
-                "Tina, Taani","Talu, tool","Tigu, tõke, tiik","Tuum","Tita, tuut",
-                "Tuvi","Teip, tibi","Toos","Tüür, taara, tõru","Teed, taud, tädi",
-                "Vein, viin","Viiul, viil, vaal","Vaik","Vaim",
-                "Võti, viit, vaat, vööt","WiFi (– ruuter)","V.I.P, vibu",
-                "Vaas antiik, Võsa, veis","Vaarao,vari, veri, vöör","Vaha, voodi",
-                "Paun, peni","Palee","Piik, paak","Piim, puuma, pime",
-                "Paat, piit, peet","Päev","Piip","Pesa, pisa, põis, puus",
-                "Puur, puri","Pada, padi, pöid, pide","Saan, seen",
-                "Siil, sõel","Saag","Sumo, seeme","Aste, sete, osuti",
-                "Šeif, savi","Seep, saba","Uss",
-                "Sari, saar","Süda","Ruun","Raal, rool","Riik, röga, rauk",
-                "Rooma, arm","Riit","Riiv (toidu, ukse), reiv","Raba, urb",
-                "Roos","Urr","Reha, raha, raadio","Hein, hani","Huul",
-                "Hoki, juga","Aadam, daim","Jeti","Haav, ahv","Hape, habe",
-                "Hiis","Hiir","Haud"};
 
         //Küsin kas soovitakse tutvuda õpetusega
         System.out.println("Tere! Olete sisenenud ühe äärmiselt kasuliku mälutehnika" +
@@ -74,12 +47,12 @@ public class Peaklass {
                 else if(tase==2) {
                     System.out.println();
                     System.out.println();
-                    NumbridSonadeks.tase2(soovitus);
+                    NumbridSonadeks.tase2();
                 }
                 else if(tase==3) {
                     System.out.println();
                     System.out.println();
-                    NumbridSonadeks.tase3(soovitus);
+                    NumbridSonadeks.tase3();
                 }
                 else if(tase==4) {
                     System.out.println();
