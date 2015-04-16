@@ -1,15 +1,20 @@
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.event.KeyAdapter;
+import java.util.EventListener;
 import java.util.Scanner;
 
 class SisendiViga extends Exception {
@@ -65,16 +70,13 @@ public class NumbridSonadeks {
         final TextField kastike = new TextField();
         pane.getChildren().add(kastike);
 
-        Button enter = new Button();
-        enter.setText("Enter");
-        pane.getChildren().add(enter);
-
         //Tagasiside jaoks koht
         final Text tagasiside = new Text("");
         pane.getChildren().add(tagasiside);
 
         //harjutamise lõpetamist võimaldav nupp
         Button lopeta = new Button("Lõpeta");
+        lopeta.setStyle("-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 22;");
         pane.getChildren().add(lopeta);
         lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
                                      public void handle(MouseEvent me) {
@@ -83,29 +85,32 @@ public class NumbridSonadeks {
                                  });
 
         //kontrollin, kas on õige või vale
-        enter.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                if (Integer.parseInt(arv.getText()) == 1) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.one.getN(), Peaklass.one.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 2) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.two.getN(), Peaklass.two.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 3) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.three.getN(), Peaklass.three.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 4) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.four.getN(), Peaklass.four.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 5) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.five.getN(), Peaklass.five.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 6) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.six.getN(), Peaklass.six.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 7) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.seven.getN(), Peaklass.seven.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 8) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.eight.getN(), Peaklass.eight.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 9) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.nine.getN(), Peaklass.nine.getT(), tagasiside, arv);
-                } else if (Integer.parseInt(arv.getText()) == 0) {
-                    kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.nul.getN(), Peaklass.nul.getT(), tagasiside, arv);
+        kastike.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent me) {
+                if (me.getCode() == KeyCode.ENTER) {
+                    if (Integer.parseInt(arv.getText()) == 1) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.one.getN(), Peaklass.one.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 2) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.two.getN(), Peaklass.two.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 3) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.three.getN(), Peaklass.three.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 4) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.four.getN(), Peaklass.four.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 5) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.five.getN(), Peaklass.five.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 6) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.six.getN(), Peaklass.six.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 7) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.seven.getN(), Peaklass.seven.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 8) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.eight.getN(), Peaklass.eight.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 9) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.nine.getN(), Peaklass.nine.getT(), tagasiside, arv);
+                    } else if (Integer.parseInt(arv.getText()) == 0) {
+                        kontrollEsimene(kastike.getText(), Integer.parseInt(arv.getText()), Peaklass.nul.getN(), Peaklass.nul.getT(), tagasiside, arv);
+                    }
                 }
+                kastike.setText("");
             }
         });
         return stack;
@@ -147,9 +152,6 @@ public class NumbridSonadeks {
         final TextField kastike = new TextField();
         pane.getChildren().add(kastike);
 
-        Button enter = new Button();
-        enter.setText("Enter");
-        pane.getChildren().add(enter);
 
         //Tagasiside jaoks koht
         final Text tagasiside = new Text("");
@@ -161,6 +163,7 @@ public class NumbridSonadeks {
 
         //harjutamise lõpetamist võimaldav nupp
         Button lopeta = new Button("Lõpeta");
+        lopeta.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
         pane.getChildren().add(lopeta);
         lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
@@ -170,30 +173,32 @@ public class NumbridSonadeks {
         });
 
 
-        enter.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                boolean v;
-                //kontrollin, kas sõna sisaldab piisavalt tähti
-                if (kastike.getText().length() > 1) {
-                    String sona = kastike.getText();
-                    sona = sona.replaceAll("[aceiouõüöäq]", "");
-                    v = taheÕigsus(kastike, arv, soov) && sona.length() == 1;
-                    int a = (int) Math.round(Math.random() * 9 + 0);
-                    arv.setText(String.valueOf(a));
+        kastike.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                                    public void handle(KeyEvent me) {
+                                        if (me.getCode() == KeyCode.ENTER) {
+                                            boolean v;
+                                            //kontrollin, kas sõna sisaldab piisavalt tähti
+                                            if (kastike.getText().length() > 1) {
+                                                String sona = kastike.getText();
+                                                sona = sona.replaceAll("[aceiouõüöäq]", "");
+                                                v = taheÕigsus(kastike, arv, soov) && sona.length() == 1;
+                                                int a = (int) Math.round(Math.random() * 9 + 0);
+                                                arv.setText(String.valueOf(a));
 
-                    if (v) {
-                        tagasiside.setText("Õige");
-                    } else {
-                        tagasiside.setText("Vale!");
-                    }
-                } else {
-                    tagasiside.setText("Sisestada tuleb sõna!");
-                }
-            }
-            });
+                                                if (v) {
+                                                    tagasiside.setText("Õige");
+                                                } else {
+                                                    tagasiside.setText("Vale!");
+                                                }
+                                            } else {
+                                                tagasiside.setText("Sisestada tuleb sõna!");
+                                            }
+                                        }
+                                    }
+                                });
 
-        return stack;
-    }
+            return stack;
+        }
 
     public static boolean taheÕigsus(TextField kastike, Text arv, Text soov) {
         boolean v = true;
@@ -223,6 +228,7 @@ public class NumbridSonadeks {
         }
         //sõna soovitus ka
         soov.setText(arv.getText()+ " sõnaks sobib: " + soovitus[Integer.parseInt(arv.getText())]);
+        kastike.setText("");
         return v;
     }
 
@@ -254,11 +260,6 @@ public class NumbridSonadeks {
         final TextField kastike = new TextField();
         pane.getChildren().add(kastike);
 
-        //nupp vastuse kontrollimiseks
-        Button enter = new Button();
-        enter.setText("Enter");
-        pane.getChildren().add(enter);
-
         //tagasiside jaoks tekstiväli
         final Text tagasiside = new Text("");
         pane.getChildren().add(tagasiside);
@@ -269,6 +270,7 @@ public class NumbridSonadeks {
 
         //harjutamise lõpetamist võimaldav nupp
         Button lopeta = new Button("Lõpeta");
+        lopeta.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
         pane.getChildren().add(lopeta);
         lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
@@ -278,30 +280,32 @@ public class NumbridSonadeks {
 
 
         //enteri funktsioonid
-        enter.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                try {
-                    if (kastike.getText().length() > 1) {
-                        String sona = kastike.getText();
-                        sona = sona.toLowerCase().replaceAll("[aceiouõüöäq]", "");
-                        String[] taht = sona.split("");
-                        //kontrollin, kas sõna sisaldab piisavalt tähti
-                        if (taht.length == 2) {
-                            //kontrollin, kas on täht õige või vale
-                            kontroll(kastike, arvuväli, soov, tagasiside);
-                        } else{
-                            tagasiside.setText("Midagi läks nüüd väga valesti!");
-                        }
-                    } else {
-                        throw new SisendiViga("Sisestada tuleb sõna!");
-                    }
-                } catch (Exception e) {
-                    tagasiside.setText(e.getMessage());
-                }
-            }
-        });
-        return stack;
-    }
+        kastike.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                                    public void handle(KeyEvent me) {
+                                        if (me.getCode() == KeyCode.ENTER) {
+                                            try {
+                                                if (kastike.getText().length() > 1) {
+                                                    String sona = kastike.getText();
+                                                    sona = sona.toLowerCase().replaceAll("[aceiouõüöäq]", "");
+                                                    String[] taht = sona.split("");
+                                                    //kontrollin, kas sõna sisaldab piisavalt tähti
+                                                    if (taht.length == 2) {
+                                                        //kontrollin, kas on täht õige või vale
+                                                        kontroll(kastike, arvuväli, soov, tagasiside);
+                                                    } else {
+                                                        tagasiside.setText("Midagi läks nüüd väga valesti!");
+                                                    }
+                                                } else {
+                                                    throw new SisendiViga("Sisestada tuleb sõna!");
+                                                }
+                                            } catch (Exception e) {
+                                                tagasiside.setText(e.getMessage());
+                                            }
+                                        }
+                                    }
+                                });
+            return stack;
+        }
 
     public static void kontroll(TextField kastike, Text arvuväli, Text soov, Text tagasiside) {
         boolean v = true;
@@ -370,6 +374,7 @@ public class NumbridSonadeks {
         }else{
             tagasiside.setText("Vale!");
         }
+        kastike.setText("");
 
     }
 }

@@ -119,9 +119,8 @@ public class FxPeaklass extends Application {
         pane.getChildren().addAll(PILT, tile);
 
 
-        Button tase1 = new Button();
-            //tase1.setStyle("-fx-background-color: rgba(0, 0, 0, 0);");
-        tase1.setText("Tase 1");
+        Button tase1 = new Button("Tase 1");
+        tase1.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
         tase1.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 Scene stseen_h1 = new Scene(NumbridSonadeks.tase1(primaryStage, stseen1));
@@ -129,7 +128,7 @@ public class FxPeaklass extends Application {
             }
         });
         Button tase2 = new Button("Tase 2");
-        tase2.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
+        tase2.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
         tase2.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 Scene stseen_h2 = new Scene(NumbridSonadeks.tase2(primaryStage, stseen1));
@@ -138,7 +137,7 @@ public class FxPeaklass extends Application {
             }
         });
         Button tase3 = new Button("Tase 3");
-        tase3.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
+        tase3.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
         tase3.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 Scene stseen_h3 = new Scene(NumbridSonadeks.tase3(primaryStage, stseen1));
@@ -146,14 +145,14 @@ public class FxPeaklass extends Application {
             }
         });
         Button tase4 = new Button("Tase 4");
-        tase4.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
+        tase4.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
         tase4.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 primaryStage.setScene(Numbristik.jätaMeelde());
             }
         });
         Button menu = new Button("Menüü");
-        menu.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
+        menu.setStyle("-fx-background-color: pink; -fx-text-fill: white; -fx-font-size: 22;");
         menu.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                primaryStage.setScene(stseen1);
