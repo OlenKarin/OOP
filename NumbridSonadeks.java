@@ -1,9 +1,14 @@
 
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.Scanner;
 
@@ -38,8 +43,15 @@ public class NumbridSonadeks {
             "Hoki, juga", "Aadam, daim", "Jeti", "Haav, ahv", "Hape, habe",
             "Hiis", "Hiir", "Haud"};
 
-    public static TilePane tase1() {
+    public static StackPane tase1(final Stage primaryStage, final Scene stseen1) {
+
+        StackPane stack = new StackPane();
         TilePane pane = new TilePane();
+        Image pilt = new Image("file:tolm.png");
+        ImageView PILT = new ImageView(pilt);
+        PILT.setFitHeight(primaryStage.getHeight());
+        PILT.setFitHeight(primaryStage.getWidth());
+        stack.getChildren().addAll(PILT, pane);
         System.out.println("Harjutame foneetilist tähestikku!" + "\n" +
                 "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
 
@@ -60,6 +72,15 @@ public class NumbridSonadeks {
         //Tagasiside jaoks koht
         final Text tagasiside = new Text("");
         pane.getChildren().add(tagasiside);
+
+        //harjutamise lõpetamist võimaldav nupp
+        Button lopeta = new Button("Lõpeta");
+        pane.getChildren().add(lopeta);
+        lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
+                                     public void handle(MouseEvent me) {
+                                        primaryStage.setScene(stseen1);
+                                     }
+                                 });
 
         //kontrollin, kas on õige või vale
         enter.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -87,7 +108,7 @@ public class NumbridSonadeks {
                 }
             }
         });
-        return pane;
+        return stack;
     }
 
     //meetot kontrollimaks, kas täht ja number on vastavuses - tagastatakse õige täht
@@ -102,9 +123,16 @@ public class NumbridSonadeks {
     }
 
 
-    public static TilePane tase2() {
+    public static StackPane tase2(final Stage primaryStage, final Scene stseen1) {
 
+
+        StackPane stack = new StackPane();
         TilePane pane = new TilePane();
+        Image pilt = new Image("file:mustrid.png");
+        ImageView PILT = new ImageView(pilt);
+        PILT.setFitHeight(primaryStage.getHeight());
+        PILT.setFitHeight(primaryStage.getWidth());
+        stack.getChildren().addAll(PILT, pane);
 
         System.out.println("Harjutame kirjutama sõnu, mis sisaldavad õiget tähte!" + "\n" +
                 "Siin tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks vaid ÜHTE foneetilist tähte!" + "\n" +
@@ -131,6 +159,17 @@ public class NumbridSonadeks {
         final Text soov = new Text("");
         pane.getChildren().add(soov);
 
+        //harjutamise lõpetamist võimaldav nupp
+        Button lopeta = new Button("Lõpeta");
+        pane.getChildren().add(lopeta);
+        lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+
+                primaryStage.setScene(stseen1);
+            }
+        });
+
+
         enter.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 boolean v;
@@ -153,7 +192,7 @@ public class NumbridSonadeks {
             }
             });
 
-        return pane;
+        return stack;
     }
 
     public static boolean taheÕigsus(TextField kastike, Text arv, Text soov) {
@@ -188,13 +227,18 @@ public class NumbridSonadeks {
     }
 
 
-    public static TilePane tase3() {
+    public static StackPane tase3(final Stage primaryStage, final Scene stseen1) {
 
+        StackPane stack = new StackPane();
         TilePane pane = new TilePane();
+        Image pilt = new Image("file:puu.png");
+        ImageView PILT = new ImageView(pilt);
+        PILT.setFitHeight(primaryStage.getHeight());
+        PILT.setFitHeight(primaryStage.getWidth());
+        stack.getChildren().addAll(PILT, pane);
         System.out.println("Harjutame kirjutama sõnu, mis sisaldavad õigeid tähti!" + "\n" +
                 "Sisestada tuleb sõna, mis sisaldab kahte foneetilist tähte, mis on ka õiges järjekorras. " + "\n" +
-                "Tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks tõepoolest KAHTE foneetilist tähte!" + "\n" +
-                "Kui soovite harjutamise lõpetada, siis trükkige EXIT!");
+                "Tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks tõepoolest KAHTE foneetilist tähte!" + "\n");
 
 
         //väljastan suvalise arvu 0-99-ni
@@ -223,6 +267,16 @@ public class NumbridSonadeks {
         final Text soov = new Text("");
         pane.getChildren().add(soov);
 
+        //harjutamise lõpetamist võimaldav nupp
+        Button lopeta = new Button("Lõpeta");
+        pane.getChildren().add(lopeta);
+        lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                primaryStage.setScene(stseen1);
+            }
+        });
+
+
         //enteri funktsioonid
         enter.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
@@ -246,7 +300,7 @@ public class NumbridSonadeks {
                 }
             }
         });
-        return pane;
+        return stack;
     }
 
     public static void kontroll(TextField kastike, Text arvuväli, Text soov, Text tagasiside) {

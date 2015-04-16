@@ -34,7 +34,7 @@ public class Peaklass {
         }else {
             System.out.println("Hästi! Järgmisena liigume harjutamise juurde. ");
         }
-        while(true) {
+        /*while(true) {
             System.out.println();
             System.out.print("Valige harjutamise TASE (1,2,3,4) või kui soovite lõpetada (5): ");
             int tase = scan.nextInt();
@@ -42,7 +42,7 @@ public class Peaklass {
                 if(tase==1) {
                     System.out.println();
                     System.out.println();
-                    NumbridSonadeks.tase1();
+                    NumbridSonadeks.tase1(primaryStage, stseen1);
                 }
                 else if(tase==2) {
                     System.out.println();
@@ -64,7 +64,7 @@ public class Peaklass {
                     break;
             }
 
-        }
+        }*/
 
 
 
