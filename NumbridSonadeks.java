@@ -1,6 +1,7 @@
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -8,8 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -50,13 +55,20 @@ public class NumbridSonadeks {
 
     public static StackPane tase1(final Stage primaryStage, final Scene stseen1) {
 
-        StackPane stack = new StackPane();
-        TilePane pane = new TilePane();
-        Image pilt = new Image("file:tolm.png");
+        StackPane stack = new StackPane();//vajalikud layout'id
+        VBox pane = new VBox();
+        pane.setAlignment(Pos.CENTER);
+        pane.setSpacing(30);
+        BorderPane border = new BorderPane();
+        border.setCenter(pane);
+
+        Image pilt = new Image("file:siigrii.png");
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());
-        stack.getChildren().addAll(PILT, pane);
+        stack.getChildren().addAll(PILT, border);
+
+
         System.out.println("Harjutame foneetilist tähestikku!" + "\n" +
                 "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
 
@@ -64,19 +76,26 @@ public class NumbridSonadeks {
         //väljastan suvalise arvu 0-9-ni
         final int a = (int) Math.round(Math.random() * 9 + 0);
         final Text arv = new Text(String.valueOf(a));
+        arv.setFont(Font.font("Verdana", 70));
+        arv.setFill(Color.WHITE);
         pane.getChildren().add(arv);
 
         //küsin kasutajalt, mis tähega on tegu
         final TextField kastike = new TextField();
+        kastike.setMaxWidth(100);
+        kastike.setStyle("-fx-text-inner-color: mediumvioletred; -fx-font-size: 22;");
         pane.getChildren().add(kastike);
 
         //Tagasiside jaoks koht
         final Text tagasiside = new Text("");
+        tagasiside.setFont(Font.font("Verdana", 40));
+        tagasiside.setFill(Color.WHITE);
         pane.getChildren().add(tagasiside);
 
         //harjutamise lõpetamist võimaldav nupp
         Button lopeta = new Button("Lõpeta");
-        lopeta.setStyle("-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 22;");
+        lopeta.setStyle("-fx-border-stylel:solid; -fx-border-width:2pt; -fx-border-color:white;" +
+                "-fx-background-color: mediumseagreen; -fx-text-fill: white; -fx-font-size: 22;");
         pane.getChildren().add(lopeta);
         lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
                                      public void handle(MouseEvent me) {
@@ -118,7 +137,7 @@ public class NumbridSonadeks {
 
     //meetot kontrollimaks, kas täht ja number on vastavuses - tagastatakse õige täht
     public static void kontrollEsimene(String taht, int nr, int foneetiline_arv, String T, Text tagasiside, Text arv) {
-        if (T.contains(taht.toLowerCase()) && nr == foneetiline_arv) {
+        if (T.contains(taht.toLowerCase()) && nr == foneetiline_arv && !taht.equals("")) {
             tagasiside.setText("Õige!");
         } else {
             tagasiside.setText("Vale! " + nr + " = " + T);
@@ -132,12 +151,17 @@ public class NumbridSonadeks {
 
 
         StackPane stack = new StackPane();
-        TilePane pane = new TilePane();
-        Image pilt = new Image("file:mustrid.png");
+        VBox pane = new VBox();
+        pane.setAlignment(Pos.CENTER);
+        pane.setSpacing(30);
+        BorderPane border = new BorderPane();
+        border.setCenter(pane);
+
+        Image pilt = new Image("file:puu.png");
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());
-        stack.getChildren().addAll(PILT, pane);
+        stack.getChildren().addAll(PILT, border);
 
         System.out.println("Harjutame kirjutama sõnu, mis sisaldavad õiget tähte!" + "\n" +
                 "Siin tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks vaid ÜHTE foneetilist tähte!" + "\n" +
@@ -146,24 +170,32 @@ public class NumbridSonadeks {
         //väljastan suvalise arvu 0-9-ni
         final int a = (int) Math.round(Math.random() * 9 + 0);
         final Text arv = new Text(String.valueOf(a));
+        arv.setFont(Font.font("Verdana", 90));
+        arv.setFill(Color.BLACK);
         pane.getChildren().add(arv);
 
         //küsin kasutajalt, mis tähega on tegu
         final TextField kastike = new TextField();
+        kastike.setMaxWidth(140);
+        kastike.setStyle("-fx-text-inner-color: steelblue; -fx-font-size: 28;");
         pane.getChildren().add(kastike);
-
 
         //Tagasiside jaoks koht
         final Text tagasiside = new Text("");
+        tagasiside.setFont(Font.font("Verdana", 40));
+        tagasiside.setFill(Color.WHITE);
         pane.getChildren().add(tagasiside);
 
         //Soovituse koht
         final Text soov = new Text("");
+        soov.setFont(Font.font("Verdana", 36));
+        soov.setFill(Color.WHITE);
         pane.getChildren().add(soov);
 
         //harjutamise lõpetamist võimaldav nupp
         Button lopeta = new Button("Lõpeta");
-        lopeta.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
+        lopeta.setStyle("-fx-border-stylel:solid; -fx-border-width:2pt; -fx-border-color:mediumslateblue;" +
+                "-fx-background-color: orchid; -fx-text-fill: white; -fx-font-size: 26;");
         pane.getChildren().add(lopeta);
         lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
@@ -206,25 +238,25 @@ public class NumbridSonadeks {
         sona = sona.replaceAll("[aceiouõüöäq]", "");
         //kontrollin, kas on õige või vale
         if (Integer.parseInt(arv.getText()) == 1) {
-            v = sona.contains(Peaklass.one.getT()) && Integer.parseInt(arv.getText()) == Peaklass.one.getN();
+            v = Peaklass.one.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.one.getN();
         } else if (Integer.parseInt(arv.getText()) == 2) {
-            v = sona.contains(Peaklass.two.getT()) && Integer.parseInt(arv.getText()) == Peaklass.two.getN();
+            v = Peaklass.two.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.two.getN();
         } else if (Integer.parseInt(arv.getText()) == 3) {
-            v = sona.contains(Peaklass.three.getT()) && Integer.parseInt(arv.getText()) == Peaklass.three.getN();
+            v = Peaklass.three.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.three.getN();
         } else if (Integer.parseInt(arv.getText()) == 4) {
-            v = sona.contains(Peaklass.four.getT()) && Integer.parseInt(arv.getText()) == Peaklass.four.getN();
+            v = Peaklass.four.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.four.getN();
         } else if (Integer.parseInt(arv.getText()) == 5) {
-            v = sona.contains(Peaklass.five.getT()) && Integer.parseInt(arv.getText()) == Peaklass.five.getN();
+            v = Peaklass.five.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.five.getN();
         } else if (Integer.parseInt(arv.getText()) == 6) {
-            v = sona.contains(Peaklass.six.getT()) && Integer.parseInt(arv.getText()) == Peaklass.six.getN();
+            v = Peaklass.six.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.six.getN();
         } else if (Integer.parseInt(arv.getText()) == 7) {
-            v = sona.contains(Peaklass.seven.getT()) && Integer.parseInt(arv.getText()) == Peaklass.seven.getN();
+            v = Peaklass.seven.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.seven.getN();
         } else if (Integer.parseInt(arv.getText()) == 8) {
-            v = sona.contains(Peaklass.eight.getT()) && Integer.parseInt(arv.getText()) == Peaklass.eight.getN();
+            v = Peaklass.eight.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.eight.getN();
         } else if (Integer.parseInt(arv.getText()) == 9) {
-            v = sona.contains(Peaklass.nine.getT()) && Integer.parseInt(arv.getText()) == Peaklass.nine.getN();
+            v = Peaklass.nine.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.nine.getN();
         } else if (Integer.parseInt(arv.getText()) == 0) {
-            v = sona.contains(Peaklass.nul.getT()) && Integer.parseInt(arv.getText()) == Peaklass.nul.getN();
+            v = Peaklass.nul.getT().contains(sona) && Integer.parseInt(arv.getText()) == Peaklass.nul.getN();
         }
         //sõna soovitus ka
         soov.setText(arv.getText()+ " sõnaks sobib: " + soovitus[Integer.parseInt(arv.getText())]);

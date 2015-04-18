@@ -25,7 +25,7 @@ class ValesisendiViga extends Exception{
 
 public class Numbristik {
     //meetod pikkade numbrite päheõppimise harjutamiseks
-    public static Scene jätaMeelde() {
+    public static Scene jätaMeelde(final Stage primaryStage, final Scene menüü) {
 
         final Stage newStage = new Stage();
         newStage.setWidth(500);
@@ -43,13 +43,30 @@ public class Numbristik {
         Image pilt1 = new Image("file:linnud.png");
         ImageView PILT1 = new ImageView(pilt1);
         TilePane pane1 = new TilePane();
+
+        Button menu = new Button("Menüü");//nupp menüüsse tagasi minemiseks
+        menu.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 20;");
+        pane1.getChildren().add(menu);
+        menu.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                primaryStage.setScene(menüü);
+            }
+            });
+
         Button alusta = new Button("Alusta"); //nupp alustamiseks
-        alusta.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
+        alusta.setStyle("-fx-background-color: purple; -fx-text-fill: white; -fx-font-size: 24;");
         pane1.getChildren().add(alusta);
+
         Text kasutaja_valim = new Text("Vali endale kasutaja:"); //et kasutaja teaks endale kasutaja valida
         pane1.getChildren().add(kasutaja_valim);
+
         TextField uus_kasutaja = new TextField(); //et kasutaja saaks endale luua uue kasutaja
         pane1.getChildren().add(uus_kasutaja);
+
+        Button lisa = new Button("Lisa");
+        lisa.setStyle("-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 18;");
+        pane1.getChildren().add(lisa);
+
         ListView<String> kasutajad = new ListView<String>();
         ObservableList<String> nimed = FXCollections.observableArrayList("Karru", "Marru", "Tarru");
         kasutajad.setPrefHeight(100);
@@ -57,6 +74,9 @@ public class Numbristik {
         pane1.getChildren().add(kasutajad);
         stack1.getChildren().addAll(PILT1, pane1);
         Scene stseen1 = new Scene(stack1);
+
+
+
 
         //STSEEN 2 vastamiseks
         final TilePane pane2 = new TilePane();
@@ -99,9 +119,6 @@ public class Numbristik {
         TilePane pane3 = new TilePane();
         final TextField vastus = new TextField();//küsin kasutajalt, mis numbriga on tegu
         pane3.getChildren().add(vastus);
-        Button vasta = new Button("Vasta");//nupp vastamiseks
-        vasta.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
-        pane3.getChildren().add(vasta);
         StackPane stack3 = new StackPane();
         stack3.getChildren().addAll(PILT2, pane3);
         final Scene stseen3 = new Scene(stack3);
