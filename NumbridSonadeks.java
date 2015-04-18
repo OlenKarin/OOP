@@ -68,13 +68,7 @@ public class NumbridSonadeks {
         PILT.setFitHeight(primaryStage.getWidth());
         stack.getChildren().addAll(PILT, border);
 
-
-        System.out.println("Harjutame foneetilist tähestikku!" + "\n" +
-                "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
-
-
-        //väljastan suvalise arvu 0-9-ni
-        final int a = (int) Math.round(Math.random() * 9 + 0);
+        final int a = (int) Math.round(Math.random() * 9 + 0);//väljastan suvalise arvu 0-9-ni
         final Text arv = new Text(String.valueOf(a));
         arv.setFont(Font.font("Verdana", 70));
         arv.setFill(Color.WHITE);
@@ -162,10 +156,6 @@ public class NumbridSonadeks {
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());
         stack.getChildren().addAll(PILT, border);
-
-        System.out.println("Harjutame kirjutama sõnu, mis sisaldavad õiget tähte!" + "\n" +
-                "Siin tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks vaid ÜHTE foneetilist tähte!" + "\n" +
-                "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
 
         //väljastan suvalise arvu 0-9-ni
         final int a = (int) Math.round(Math.random() * 9 + 0);
@@ -267,17 +257,18 @@ public class NumbridSonadeks {
 
     public static StackPane tase3(final Stage primaryStage, final Scene stseen1) {
 
-        StackPane stack = new StackPane();
-        TilePane pane = new TilePane();
-        Image pilt = new Image("file:puu.png");
+        StackPane stack = new StackPane();//teen vajalikud layout-id
+        BorderPane border = new BorderPane();
+        VBox pane = new VBox();
+        pane.setAlignment(Pos.CENTER);
+        pane.setSpacing(30);
+        border.setCenter(pane);
+
+        Image pilt = new Image("file:sun.png");//lisan taustapildi
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());
-        stack.getChildren().addAll(PILT, pane);
-        System.out.println("Harjutame kirjutama sõnu, mis sisaldavad õigeid tähti!" + "\n" +
-                "Sisestada tuleb sõna, mis sisaldab kahte foneetilist tähte, mis on ka õiges järjekorras. " + "\n" +
-                "Tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks tõepoolest KAHTE foneetilist tähte!" + "\n");
-
+        stack.getChildren().addAll(PILT, border);
 
         //väljastan suvalise arvu 0-99-ni
         int arv1 = (int) Math.round(Math.random() * 8 + 1);
@@ -286,23 +277,31 @@ public class NumbridSonadeks {
 
         //numbri kuvamiseks text-i väli
         final Text arvuväli = new Text(number);
+        arvuväli.setFont(Font.font("Verdana", 90));
+        arvuväli.setFill(Color.BLACK);
         pane.getChildren().add(arvuväli);
 
         //sõna sisestamiseks box
         final TextField kastike = new TextField();
+        kastike.setMaxWidth(140);
+        kastike.setStyle("-fx-text-inner-color: teal; -fx-font-size: 28;");
         pane.getChildren().add(kastike);
 
         //tagasiside jaoks tekstiväli
         final Text tagasiside = new Text("");
+        tagasiside.setFont(Font.font("Verdana", 30));
+        tagasiside.setFill(Color.BLACK);
         pane.getChildren().add(tagasiside);
 
         //soovituse jaoks tekstiväli
         final Text soov = new Text("");
+        soov.setFont(Font.font("Verdana", 28));
+        soov.setFill(Color.BLACK);
         pane.getChildren().add(soov);
 
         //harjutamise lõpetamist võimaldav nupp
         Button lopeta = new Button("Lõpeta");
-        lopeta.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: black; -fx-font-size: 22;");
+        lopeta.setStyle("-fx-background-color: orangered; -fx-text-fill: black; -fx-font-size: 22;");
         pane.getChildren().add(lopeta);
         lopeta.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
@@ -339,6 +338,7 @@ public class NumbridSonadeks {
             return stack;
         }
 
+    //viimase taseme mõlema tähe õigsuse kontrollimine
     public static void kontroll(TextField kastike, Text arvuväli, Text soov, Text tagasiside) {
         boolean v = true;
         boolean k = true;

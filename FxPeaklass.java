@@ -55,12 +55,12 @@ public class FxPeaklass extends Application {
 
 
         Button opetus = new Button(); //nupp õpetuse juurde minemiseks
-        opetus.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
+        opetus.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
         opetus.setText("  Õpetus  ");
         tile.getChildren().add(opetus);
 
         Button harjutama = new Button();
-        harjutama.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
+        harjutama.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
         harjutama.setText("Harjutama");
         tile.getChildren().add(harjutama);
         harjutama.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -83,6 +83,29 @@ public class FxPeaklass extends Application {
                 //menu.setTranslateY(20);
                 //menu.setAlignment(Pos.BOTTOM_RIGHT);
                 group.getChildren().addAll(a, menu);
+
+
+                System.out.println("TASE 1 Harjutame foneetilist tähestikku!" + "\n" +
+                        "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
+
+
+                System.out.println("TASE 2 Harjutame kirjutama sõnu, mis sisaldavad õiget tähte!" + "\n" +
+                        "Siin tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks vaid ÜHTE foneetilist tähte!" + "\n" +
+                        "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
+
+
+                System.out.println("TASE 3 Harjutame kirjutama sõnu, mis sisaldavad õigeid tähti!" + "\n" +
+                        "Sisestada tuleb sõna, mis sisaldab kahte foneetilist tähte, mis on ka õiges järjekorras. " + "\n" +
+                        "Tuleb silmas pidada, et sõna oleks tähendusega ning sisaldaks tõepoolest KAHTE foneetilist tähte!" + "\n");
+
+
+                System.out.println("TASE 4 Oled jõudnud numbrite meelde jätmise tasemeni. Anname sulle ette ühe" +
+                        "ja pika arvu, mille saad eelnevalt õpitud meetodeid kasutades meelde jätta. " +
+                        "Pähe õppimise aega saad sa ise reguleerida, vajutades Enterit." +
+                        "Numbri ilmumise hetkest hakkab tiksuma aeg. Arvu meelde jätmiseks kulunud aeg" +
+                        " näitabki Sinu arengut. Mõnusat elamust!" +
+                        "Kui enam harjutada ei soovi, siis sisesta 0.");
+
 
                 Scene stseen2 = new Scene(group);
                 primaryStage.setScene(stseen2);
