@@ -25,10 +25,8 @@ public class Peaklass {
             //õpetuse saamise asi
             Opetus.instructions("src/opetus_sissejuhatus.txt");
             System.out.print("Edasi minemiseks vajuta ENTER");
-            String enter1 = scan.nextLine();
             Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/foneetiline_tahestik.txt");
             System.out.print("Edasi minemiseks vajuta ENTER");
-            String enter2 = scan.nextLine();
             Opetus.instructions("C:/Users/Karin/IdeaProjects/MY Projects/src/numbrite_teisendamine.txt");
 
         }else {

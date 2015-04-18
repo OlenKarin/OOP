@@ -13,7 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -188,6 +187,7 @@ public class Numbristik {
 
         final Scene stseen4 = new Scene(stack4);
 
+        //stseen 4 uuele vastamisele suunav nupp
         edasi.setOnMousePressed(new EventHandler<MouseEvent>() {//edasi nupp viib uue vastamise juurde
             public void handle(MouseEvent me) {
                 vastus.setText("");
@@ -197,6 +197,7 @@ public class Numbristik {
             }
         });
 
+        //stseen 2 nupp vastama asumiseks
         vastama.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 newStage.setScene(stseen3);
@@ -204,6 +205,7 @@ public class Numbristik {
             }
         });
 
+        //enteri vajutusega saab vastuse anda
         vastus.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent me) {
                 if (me.getCode() == KeyCode.ENTER) {
