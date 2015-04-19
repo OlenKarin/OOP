@@ -62,7 +62,7 @@ public class Numbristik {
         kasutaja_valim.setFill(Color.BLACK);
         pane1.getChildren().add(kasutaja_valim);
 
-        TextField uus_kasutaja = new TextField(); //et kasutaja saaks endale luua uue kasutaja
+        final TextField uus_kasutaja = new TextField(); //et kasutaja saaks endale luua uue kasutaja
         uus_kasutaja.setMaxWidth(200);
         uus_kasutaja.setStyle("-fx-text-inner-color: indigo; -fx-font-size: 22;");
         pane1.getChildren().add(uus_kasutaja);
@@ -78,8 +78,8 @@ public class Numbristik {
         pealkiri.setFill(Color.BLACK);
         pane1.getChildren().add(pealkiri);
 
-        ListView<String> kasutajad = new ListView<String>();
-        ObservableList<String> nimed = FXCollections.observableArrayList("Karru", "Marru", "Tarru");
+        final ListView<Kasutaja> kasutajad = new ListView<Kasutaja>();
+        final ObservableList<Kasutaja> nimed = FXCollections.observableArrayList();
         kasutajad.setPrefHeight(100);
         kasutajad.setMaxWidth(300);
         kasutajad.setItems(nimed);
@@ -93,10 +93,17 @@ public class Numbristik {
         stack1.getChildren().addAll(PILT1, border1);
         Scene stseen1 = new Scene(stack1);
 
-
+        lisa.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if(!uus_kasutaja.getText().equals("")) {
+                    Kasutaja a = new Kasutaja(uus_kasutaja.getText(), "0");
+                    nimed.add(a);
+                    uus_kasutaja.setText("");
+                }
+            }
+        });
 
         //STSEEN 2 vastamiseks-----------------------------------------------------------------------------
-
         final VBox pane2 = new VBox();//vajalikud layout'id
         final StackPane stack2 = new StackPane();
         BorderPane border2 = new BorderPane();
@@ -107,16 +114,16 @@ public class Numbristik {
         final Text arvuväli = new Text("");//random arvu jaoks väli
         final long arv = (int) Math.round(Math.random() * 999999999 + 1000000000);
         arvuväli.setFont(Font.font("Verdana", 55));
-        arvuväli.setFill(Color.BLACK);
+        arvuväli.setFill(Color.WHITE);
         arvuväli.setText(String.valueOf(arv));
         pane2.getChildren().add(arvuväli);
 
         final Button vastama = new Button("Vastama");//vastamise alustamiseks nupp
-        vastama.setStyle("-fx-background-color: deeppink; -fx-text-fill: black; -fx-font-size: 22;");
+        vastama.setStyle("-fx-background-color: purple; -fx-text-fill: white; -fx-font-size: 28;");
         pane2.getChildren().add(vastama);
 
         Button exit = new Button("Lõpeta");//nupp harjutustasemest väljumiseks
-        exit.setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22;");
+        exit.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-size: 22;");
         pane2.getChildren().add(exit);
         exit.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
@@ -126,15 +133,16 @@ public class Numbristik {
 
         Image pilt2 = new Image("file:mullid.png");
         ImageView PILT2 = new ImageView(pilt2);
-        //PILT2.setFitHeight(300);
-        //PILT2.setFitWidth(400);
-        stack2.getChildren().addAll(border2, PILT2);
+        stack2.getChildren().addAll(PILT2, border2);
         final Scene stseen2 = new Scene(stack2);
 
+        Kasutaja b;
+         //et saaks hakata kuskile skoore salvestama
         alusta.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                //aja mõõtmise algus
-                Aeg.startAeg = Calendar.getInstance().getTime();
+               // b = kasutajad.getSelectionModel().getSelectedItem();
+                //System.out.print(b);
+                Aeg.startAeg = Calendar.getInstance().getTime();//aja mõõtmise algus
                 newStage.setWidth(460);
                 newStage.setHeight(500);
                 newStage.setScene(stseen2);
@@ -156,7 +164,8 @@ public class Numbristik {
         vastus.setMaxWidth(300);
         vastus.setStyle("-fx-text-inner-color: indigo; -fx-font-size: 28;");
         pane3.getChildren().add(vastus);
-        stack3.getChildren().addAll(PILT2, border3);
+        ImageView PILT3 = new ImageView(pilt2);
+        stack3.getChildren().addAll(PILT3, border3);
         final Scene stseen3 = new Scene(stack3);
 
         //STSEEN 4 Tagasiside-----------------------------------------------------------------------------------
@@ -182,8 +191,8 @@ public class Numbristik {
         edasi.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color: darkmagenta;" +
                 "-fx-background-color: palevioletred; -fx-text-fill: white; -fx-font-size: 30;");
         pane4.getChildren().add(edasi);
-
-        stack4.getChildren().addAll(PILT2, border4);
+        ImageView PILT4 = new ImageView(pilt2);
+        stack4.getChildren().addAll(PILT4, border4);
 
         final Scene stseen4 = new Scene(stack4);
 
