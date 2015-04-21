@@ -1,3 +1,5 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -18,6 +20,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -33,8 +38,8 @@ public class Numbristik {
     public static Scene jätaMeelde(final Stage primaryStage, final Scene menüü) {
 
         final Stage newStage = new Stage();//teen uue lava
-        primaryStage.setHeight(600);
-        primaryStage.setWidth(460);
+        primaryStage.setHeight(630);
+        primaryStage.setWidth(450);
 
         //STSEEN 1 harjutama alustamiseks--------------------------------------------------------------
 
@@ -85,10 +90,15 @@ public class Numbristik {
         kasutajad.setItems(nimed);
         pane1.getChildren().add(kasutajad);
 
-        Button alusta = new Button("Alusta"); //nupp alustamiseks
+        final Button alusta = new Button("Alusta"); //nupp alustamiseks
         alusta.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:gold;" +
                 "-fx-background-color: hotpink; -fx-text-fill: white; -fx-font-size: 26;");
         pane1.getChildren().add(alusta);
+
+        final Button salvesta = new Button("Salvesta seis"); //nupp alustamiseks
+        salvesta.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:hotpink;" +
+                "-fx-background-color: gold; -fx-text-fill:black; -fx-font-size: 16;");
+        pane1.getChildren().add(salvesta);
 
         stack1.getChildren().addAll(PILT1, border1);
         Scene stseen1 = new Scene(stack1);
@@ -96,7 +106,7 @@ public class Numbristik {
         lisa.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 if(!uus_kasutaja.getText().equals("")) {
-                    Kasutaja a = new Kasutaja(uus_kasutaja.getText(), "0");
+                    Kasutaja a = new Kasutaja(uus_kasutaja.getText(), "23h 59min 59s");
                     nimed.add(a);
                     uus_kasutaja.setText("");
                 }
@@ -122,34 +132,61 @@ public class Numbristik {
         vastama.setStyle("-fx-background-color: purple; -fx-text-fill: white; -fx-font-size: 28;");
         pane2.getChildren().add(vastama);
 
+        final ArrayList<Kasutaja> tegevlist = new ArrayList<Kasutaja>(); //et ma saaksin tundmatuid kasutajaid alati kuskilt kätte
+
         Button exit = new Button("Lõpeta");//nupp harjutustasemest väljumiseks
         exit.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-size: 22;");
         pane2.getChildren().add(exit);
-        exit.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                newStage.close();
-            }
-        });
 
         Image pilt2 = new Image("file:mullid.png");
         ImageView PILT2 = new ImageView(pilt2);
         stack2.getChildren().addAll(PILT2, border2);
         final Scene stseen2 = new Scene(stack2);
 
-        Kasutaja b;
-         //et saaks hakata kuskile skoore salvestama
-        alusta.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-               // b = kasutajad.getSelectionModel().getSelectedItem();
-                //System.out.print(b);
-                Aeg.startAeg = Calendar.getInstance().getTime();//aja mõõtmise algus
-                newStage.setWidth(460);
-                newStage.setHeight(500);
-                newStage.setScene(stseen2);
-                newStage.show();
-            }
+        kasutajad.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Kasutaja>() {
+            public void changed(ObservableValue<? extends Kasutaja> observable,
+                                Kasutaja oldValue, Kasutaja newValue) {
+                final Kasutaja hetke_harjutaja = kasutajad.getSelectionModel().getSelectedItem(); //võtan valitud objekti antid hetke kasutajaks
 
+                alusta.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent me) {
+                        tegevlist.add(hetke_harjutaja); //lisan vaadeldava kasutaja uude listi
+                        System.out.println("alusta nupp valib kasutaja:" + hetke_harjutaja);
+                        nimed.remove(nimed.indexOf(hetke_harjutaja)); //eemaldan selle kasutaja meie loetelust segaduse vältimiseks
+
+                        Aeg.startAeg = Calendar.getInstance().getTime();//aja mõõtmise algus
+                        newStage.setWidth(460);
+                        newStage.setHeight(500);
+                        newStage.setScene(stseen2);
+                        newStage.show();
+                    }
+
+                });
+            }
         });
+
+
+        exit.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                System.out.println("lõpeta nupu tegevuses lisan: "+tegevlist.get(tegevlist.size()-1));
+                nimed.add(tegevlist.get(tegevlist.size()-1));
+                newStage.close();
+            }
+        });
+
+        salvesta.setOnMousePressed(new EventHandler<MouseEvent>() {
+                                       public void handle(MouseEvent me) {
+                                           try {
+                                               Kasutaja.kirjutaLogisse(nimed);
+                                           } catch (IOException e) {
+                                               System.out.println("IO Error");
+                                           }
+                                       }
+                                   });
+
+
+
+
 
         //STSEEN 3--------------------------------------------------------------------------------------------
         //VASTUSE andmine
@@ -182,7 +219,7 @@ public class Numbristik {
         tagasiside.setFill(Color.WHITE);
         pane4.getChildren().add(tagasiside);
 
-        final Text skoor = new Text(String.valueOf(System.currentTimeMillis() / 1000000));//skoori jaoks tekst
+        final Text skoor = new Text("23h 59min 59s");//skoori jaoks tekst
         skoor.setFont(Font.font("Verdana", 40));
         skoor.setFill(Color.WHITE);
         pane4.getChildren().add(skoor);
@@ -199,6 +236,14 @@ public class Numbristik {
         //stseen 4 uuele vastamisele suunav nupp
         edasi.setOnMousePressed(new EventHandler<MouseEvent>() {//edasi nupp viib uue vastamise juurde
             public void handle(MouseEvent me) {
+                Kasutaja hetkeKasutaja = tegevlist.get(tegevlist.size()-1); //teen skoorile kontrolli ning kui on väiksem siis lisan listi viimaseks
+                System.out.println("edasi nupp kontrollib andmeid:  "+tegevlist.get(tegevlist.size()-1));
+                System.out.println(skoor.getText());
+                hetkeKasutaja.setSkoor(hetkeKasutaja.skooriKontroll(tagasiside.getText(), hetkeKasutaja.getSkoor(), skoor.getText()));
+                tegevlist.add(hetkeKasutaja);
+
+                System.out.println("tegevlisti lisame elemendi peale kontrolli : " + hetkeKasutaja);
+                System.out.println();
                 vastus.setText("");
                 Aeg.startAeg = Calendar.getInstance().getTime();
                 newStage.setScene(stseen2);
@@ -220,7 +265,7 @@ public class Numbristik {
                 if (me.getCode() == KeyCode.ENTER) {
                     try {
                         if (Integer.parseInt(arvuväli.getText()) == Integer.parseInt(vastus.getText())) {
-                            tagasiside.setText("Õige! :)");
+                            tagasiside.setText("Õige!");
                         } else {
                             throw new ValesisendiViga();
                         }
@@ -229,8 +274,9 @@ public class Numbristik {
                         tagasiside.setText("Kahjuks läks midagi valesti!");
                     }
                     Aeg.lõppAeg = Calendar.getInstance().getTime();
-                    skoor.setText("Skoor: " + Aeg.ajaMõõtmine());
+                    skoor.setText("Skoor:" + Aeg.ajaMõõtmine());
                     arvuväli.setText(String.valueOf((int) Math.round(Math.random() * 999999999 + 1000000000)));
+                    System.out.println(arvuväli.getText());
 
                     newStage.setScene(stseen4);
                 }

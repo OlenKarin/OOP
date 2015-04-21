@@ -1,4 +1,7 @@
+import javafx.collections.ObservableList;
+
 import java.io.*;
+import java.util.ArrayList;
 
 public class Kasutaja {
     public String nimi;
@@ -25,11 +28,13 @@ public class Kasutaja {
         this.skoor = skoor;
     }
 
-    public static void kirjutaLogisse(Kasutaja a)throws IOException{
-        FileOutputStream fout = new FileOutputStream("kasutajad.txt");
-        ObjectOutputStream out = new ObjectOutputStream(fout);
-        out.writeObject(a);
+    public static void kirjutaLogisse(ObservableList<Kasutaja> a)throws IOException{
 
+        FileOutputStream fout = new FileOutputStream("kasutajad.tmp");
+        ObjectOutputStream out = new ObjectOutputStream(fout);
+        for(Kasutaja elem : a ) {
+            out.writeObject(elem);
+        }
     }
     public static Kasutaja loeLogist(Kasutaja kasutaja)throws IOException, ClassNotFoundException{
         FileInputStream in = new FileInputStream("kasutajad.txt");
@@ -39,21 +44,29 @@ public class Kasutaja {
         kasutaja = (Kasutaja) obj;
         return kasutaja;
     }
-    public static void skooriKontroll(Kasutaja a, String tagasiside_tekt, String vana_skoor, String uus_skoor){
-        vana_skoor = vana_skoor.toLowerCase().replaceAll("[min hsek]", "");
-        String[] vj = vana_skoor.split("");
-        uus_skoor = uus_skoor.toLowerCase().replaceAll("[min hsek]", "");
-        String[] uj = uus_skoor.split("");
-
+    public String skooriKontroll(String tagasiside_tekt, String vana_skoor, String uus_skoor){
+        vana_skoor = vana_skoor.toLowerCase().replaceAll("[Skoor:min hs]", "");
+        System.out.println(vana_skoor);
+        String[] vj = vana_skoor.split(" ");
+        uus_skoor = uus_skoor.toLowerCase().replaceAll("[Skoor:minhs]", "");
+        String[] uj = uus_skoor.split(" ");
+        System.out.println(uj[0]);
+        System.out.println(uj[1]);
+        System.out.println(uj[2]);
+        String[] SKOOR = this.getSkoor().toLowerCase().replaceAll("[Skoor:minhs]", "").split(" ");
+        System.out.println(SKOOR[0]);
+        System.out.println(SKOOR[1]);
+        System.out.println(SKOOR[2]);
         if(tagasiside_tekt.equals("Õige!")){
-            if(t(uj[0]) < t(vj[0])){
-                a.setSkoor(uus_skoor);
-            }else if(t(uj[0]) == t(vj[0]) && t(uj[1]) < t(vj[1])){
-                a.setSkoor(uus_skoor);
-            }else if(t(uj[0]) == t(vj[0]) && t(uj[1]) == t(vj[1]) && t(uj[1]) < t(vj[1])){
-                a.setSkoor(uus_skoor);
+            if(t(uj[0]) < t(vj[0]) ||
+                    t(uj[0]) == t(vj[0]) && t(uj[1]) < t(vj[1]) ||
+                    t(uj[0]) == t(vj[0]) && t(uj[1]) == t(vj[1]) && t(uj[1]) < t(vj[1])) {
+                SKOOR[0] = uj[0];
+                SKOOR[1] = uj[1];
+                SKOOR[2] = uj[2];
             }
         }
+        return SKOOR[0]+"h "+SKOOR[1]+"min "+SKOOR[2]+"s";
     }
     public static int t(String arvusona){
         int arv = Integer.parseInt(arvusona);
