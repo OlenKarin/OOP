@@ -35,7 +35,7 @@ class ValesisendiViga extends Exception{
 public class Numbristik {
 
     //meetod pikkade numbrite päheõppimise harjutamiseks
-    public static Scene jätaMeelde(final Stage primaryStage, final Scene menüü) {
+    public static Scene jätaMeelde(final Stage primaryStage, final Scene menüü, ArrayList users) {
 
         final Stage newStage = new Stage();//teen uue lava
         primaryStage.setHeight(630);
@@ -85,6 +85,10 @@ public class Numbristik {
 
         final ListView<Kasutaja> kasutajad = new ListView<Kasutaja>();
         final ObservableList<Kasutaja> nimed = FXCollections.observableArrayList();
+        for (Object elem: users){
+            Kasutaja kasutaja = (Kasutaja) elem;
+            nimed.add(kasutaja);
+        }
         kasutajad.setPrefHeight(100);
         kasutajad.setMaxWidth(300);
         kasutajad.setItems(nimed);
@@ -179,6 +183,7 @@ public class Numbristik {
                                            try {
                                                Kasutaja.kirjutaLogisse(nimed);
                                            } catch (IOException e) {
+                                               e.printStackTrace();
                                                System.out.println("IO Error");
                                            }
                                        }

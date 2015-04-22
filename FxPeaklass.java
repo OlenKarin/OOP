@@ -10,6 +10,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class FxPeaklass extends Application {
 
@@ -167,7 +170,15 @@ public class FxPeaklass extends Application {
                 "-fx-background-color: orange; -fx-text-fill: black; -fx-font-size: 22;");
         tase4.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                primaryStage.setScene(Numbristik.jätaMeelde(primaryStage, stseen1));
+                ArrayList<Kasutaja> users = new ArrayList<Kasutaja>();
+                try {
+                    users = Kasutaja.loeLogist(users);
+                } catch (IOException a) {
+                    //a.printStackTrace();
+                } catch (ClassNotFoundException b){
+                    //b.printStackTrace();
+            }
+                primaryStage.setScene(Numbristik.jätaMeelde(primaryStage, stseen1, users));
             }
         });
         Button menu = new Button("Menüü");

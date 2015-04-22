@@ -3,7 +3,7 @@ import javafx.collections.ObservableList;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Kasutaja {
+public class Kasutaja implements Serializable{
     public String nimi;
     public String skoor;
 
@@ -30,19 +30,27 @@ public class Kasutaja {
 
     public static void kirjutaLogisse(ObservableList<Kasutaja> a)throws IOException{
 
-        FileOutputStream fout = new FileOutputStream("kasutajad.tmp");
+        FileOutputStream fout = new FileOutputStream("kasutajad.txt");
         ObjectOutputStream out = new ObjectOutputStream(fout);
         for(Kasutaja elem : a ) {
             out.writeObject(elem);
         }
+        fout.close();
+        out.close();
     }
-    public static Kasutaja loeLogist(Kasutaja kasutaja)throws IOException, ClassNotFoundException{
+    public static ArrayList<Kasutaja> loeLogist(ArrayList<Kasutaja> list)throws IOException, ClassNotFoundException{
         FileInputStream in = new FileInputStream("kasutajad.txt");
         ObjectInputStream objectIn = new ObjectInputStream(in);
-        Object obj = objectIn.readObject();
-        objectIn.close();
-        kasutaja = (Kasutaja) obj;
-        return kasutaja;
+        while(true) {
+            try {
+                Object obj = objectIn.readObject();
+                Kasutaja kasutaja = (Kasutaja) obj;
+                list.add(kasutaja);
+
+            } catch (EOFException e) {
+                return list;
+            }
+        }
     }
     public String skooriKontroll(String tagasiside_tekt, String vana_skoor, String uus_skoor){
         vana_skoor = vana_skoor.toLowerCase().replaceAll("[Skoor:min hs]", "");
