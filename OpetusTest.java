@@ -25,9 +25,9 @@ public class OpetusTest extends Application {
     class SlideShow1 {
 
 
-        public SlideShow1(){
+        public  SlideShow1(){
 
-            DoublyLinkedList<ImageView> opik = new DoublyLinkedList<>();
+            DoublyLinkedList<ImageView> opik = new DoublyLinkedList<ImageView>();
             Image image1 = new Image("/sissejuhatus/page0001.jpg");
             Image image2 = new Image("/sissejuhatus/page0002.jpg");
             Image image3 = new Image("/foneetiline/page0001.jpg");
@@ -52,10 +52,7 @@ public class OpetusTest extends Application {
             opik.addLast(slide6);
             opik.addLast(slide7);
 
-
-
         }
-
     }
 
     public static void main(String[] args) {
@@ -64,12 +61,20 @@ public class OpetusTest extends Application {
     @Override
     public void start(final Stage primaryStage) throws Exception {
         final SlideShow1 book = new SlideShow1();
+        //lihtsam oleks minu meelest see slideshow klassist välja võtta (sest sul pole vaja teha mitut)
+        //võib teha nt meetodi, mis tagastab selle listi
+
 
         StackPane root = new StackPane();
 
-        for (int i = 0; i < book.size();i++){
-            root.getChildren().add(opik.element());
-
+        for (int i = 0; i < book.size() ;i++){ //ERROR
+            root.getChildren().add(opik.element()); //ERROR
+            // parent tüüpi node-ile ei saa lisada lihtsalt javas tehtud listi
+            //liked-listile peab looma ka mingi viisi kuidas seda kuvada. Lihtsalt listi ei saa panna pane-ile
+            //minu meelest oleks variant ka teha linked list piltidest (Image) ja siis lood ühe imageview
+            //mis on node, mille saab parenti ehk root-i alla lisada :) ja siis backward ja forward vahetab kuvatavat pilti imageviews
+            //ma soovitan sulle IntellliJ mis on parem kui eclipse (näitab sulle kohe et kus errorid asuvad)
+            //märgin siia, et kus ma erroreid näen tähis
         }
 
 
@@ -77,7 +82,7 @@ public class OpetusTest extends Application {
         primaryStage.setScene(scene1);
 
 
-        primaryStage.setScene(root);
+        primaryStage.setScene(root); //ERROR
         primaryStage.setHeight(700);
         primaryStage.setWidth(900);
 
@@ -97,7 +102,7 @@ public class OpetusTest extends Application {
         back.setOnMousePressed(new EventHandler<MouseEvent>() { //Hetkel ei oska teha veel nii, et nupule vajutades navigeerimine ka t??taks
             public void handle(MouseEvent me) {
 
-                book.backward();//Alustab algusest uuesti
+                book.backward();//Alustab algusest uuesti  //ERROR
 
             }
         });
@@ -112,7 +117,7 @@ public class OpetusTest extends Application {
                 book.forward();
 
             }
-        });
+        }); //ERROR
 
 
 
@@ -128,7 +133,7 @@ public class OpetusTest extends Application {
 
     public FadeTransition getFadeTransition(OpetusTest image, double in, double out) {
 
-        FadeTransition ft = new FadeTransition(Duration.millis(2000), image);
+        FadeTransition ft = new FadeTransition(Duration.millis(2000), image); //ERROR
         ft.setFromValue(in);
         ft.setToValue(out);
 
