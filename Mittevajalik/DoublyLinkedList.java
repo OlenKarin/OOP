@@ -1,3 +1,5 @@
+package Mittevajalik;
+
 import javafx.scene.Node;
 
 /**

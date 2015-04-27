@@ -1,4 +1,4 @@
-//Vajalike pakettide importimine
+package Mittevajalik;//Vajalike pakettide importimine
 import java.util.Scanner;
 public class Opetus {
     //meetod faili sisu väljastamiseks

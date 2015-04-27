@@ -16,12 +16,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+//erindi püüdmise klass, mis tekitatakse kui sisestatakse midagi väga valesti
 class SisendiViga extends Exception {
     SisendiViga(String teade) {
         super(teade);
     }
 }
 public class NumbridSonadeks {
+    //soovitatavate sõnade jaoks järjend
     static String[] soovitus = {"nui", "luu", "kuu", "ma", "Tai", "vai", "puu", "sai", "rai",
             "jää", "Lina, laine", "Luule, leil", "Luuk,leek, lõug",
             "Liim, laama, leem", "Laut, laat", "Liiv, laava, laev",
@@ -172,7 +174,7 @@ public class NumbridSonadeks {
 
         //Soovituse koht
         final Text soov = new Text("");
-        soov.setFont(Font.font("Verdana", 36));
+        soov.setFont(Font.font("Verdana", 24));
         soov.setFill(Color.WHITE);
         pane.getChildren().add(soov);
 
@@ -189,11 +191,12 @@ public class NumbridSonadeks {
         });
 
 
+        //enteri vajutusel minnakse kasti sisestatud sõna kontrollima
         kastike.setOnKeyPressed(new EventHandler<KeyEvent>() {
                                     public void handle(KeyEvent me) {
                                         if (me.getCode() == KeyCode.ENTER) {
                                             boolean v;
-                                            //kontrollin, kas sõna sisaldab piisavalt tähti
+                                            //kontrollin, kas sõna sisaldab ja kas tegu on õige tähega
                                             if (kastike.getText().length() > 1) {
                                                 String sona = kastike.getText();
                                                 sona = sona.replaceAll("[aceiouõüöäq]", "");
@@ -216,6 +219,7 @@ public class NumbridSonadeks {
             return stack;
         }
 
+    //meetod tähe ja numbri vastavuse kontrollimiseks
     public static boolean taheÕigsus(TextField kastike, Text arv, Text soov) {
         boolean v = true;
         String sona = kastike.getText();
@@ -249,6 +253,7 @@ public class NumbridSonadeks {
     }
 
 
+    //kolmas tase kahte tähte sisaldava sõna kontrollimiseks
     public static StackPane tase3(final Stage primaryStage, final Scene stseen1) {
 
         StackPane stack = new StackPane();//teen vajalikud layout-id
@@ -278,7 +283,7 @@ public class NumbridSonadeks {
         //sõna sisestamiseks box
         final TextField kastike = new TextField();
         kastike.setMaxWidth(140);
-        kastike.setStyle("-fx-text-inner-color: teal; -fx-font-size: 28;");
+        kastike.setStyle("-fx-text-inner-color: teal; -fx-font-size: 24;");
         pane.getChildren().add(kastike);
 
         //tagasiside jaoks tekstiväli
@@ -304,7 +309,7 @@ public class NumbridSonadeks {
         });
 
 
-        //enteri funktsioonid
+        //enteri vajutusel minnakse kasti sisestatud sõna kontrollima
         kastike.setOnKeyPressed(new EventHandler<KeyEvent>() {
                                     public void handle(KeyEvent me) {
                                         if (me.getCode() == KeyCode.ENTER) {

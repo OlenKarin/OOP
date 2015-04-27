@@ -25,9 +25,9 @@ public class FxPeaklass extends Application {
     public void start(final Stage primaryStage) {
 
 
-        //kõike esimene stseen, kus saab minna õpetusse või harjutama-----------------------------------------------
+        //kõige esimene stseen, kus saab minna õpetusse või harjutama-----------------------------------------------
         StackPane pane = new StackPane();
-        final Scene stseen1 = new Scene(pane); ///stseen1.setFill(Color.SKYBLUE);____________MIKS EI TÖÖTA????
+        final Scene stseen1 = new Scene(pane);
 
         BorderPane boarder1 = new BorderPane();
         VBox tile = new VBox();
@@ -43,16 +43,10 @@ public class FxPeaklass extends Application {
 
         pane.getChildren().addAll(PILT, boarder1);
 
-        //Küsin kas soovitakse tutvuda õpetusega
-        /*System.out.println("Tere! Olete sisenenud ühe äärmiselt kasuliku mälutehnika" +
-                " õppimise ja harjutamise keskkonda! :) ");*/
-
-
         primaryStage.setScene(stseen1);
         primaryStage.setHeight(500);
         primaryStage.setWidth(500);
         primaryStage.show();
-
 
         Button opetus = new Button(); //nupp õpetuse juurde minemiseks
         opetus.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
@@ -121,7 +115,7 @@ public class FxPeaklass extends Application {
 
     }
 
-    public static StackPane harjutama(final Scene stseen1, final Stage primaryStage) {
+    public static StackPane harjutama(final Scene stseen1, final Stage primaryStage) { //stseen harjutamise taseme valimiseks
 
         StackPane pane = new StackPane(); //vajalikud layout'id
         BorderPane border = new BorderPane();
@@ -174,9 +168,7 @@ public class FxPeaklass extends Application {
                 try {
                     users = Kasutaja.loeLogist(users);
                 } catch (IOException a) {
-                    //a.printStackTrace();
                 } catch (ClassNotFoundException b){
-                    //b.printStackTrace();
             }
                 primaryStage.setScene(Numbristik.jätaMeelde(primaryStage, stseen1, users));
             }

@@ -4,6 +4,8 @@ import java.util.Date;
 /**
  * Created by Karin on 15.04.2015.
  */
+
+//klass aja mõõtmise jaoks
 public class Aeg {
     public static Date startAeg;
     public static Date lõppAeg;
@@ -13,7 +15,7 @@ public class Aeg {
         this.lõppAeg = lõppAeg;
     }
 
-   public static String ajaMõõtmine() {
+   public static String ajaMõõtmine() { //meetod ajaühikute teisendamiseks ja kuvamiseks
         SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date d1;
         Date d2;

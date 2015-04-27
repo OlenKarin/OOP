@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
+//erindi klass, et püüda kinni valesid sisendeid
 class ValesisendiViga extends Exception{
     ValesisendiViga() {
         super();
@@ -58,6 +59,8 @@ public class Numbristik {
         pane1.getChildren().add(menu);
         menu.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
+                primaryStage.setHeight(500);
+                primaryStage.setWidth(500);
                 primaryStage.setScene(menüü);
             }
             });
@@ -99,7 +102,7 @@ public class Numbristik {
                 "-fx-background-color: hotpink; -fx-text-fill: white; -fx-font-size: 26;");
         pane1.getChildren().add(alusta);
 
-        final Button salvesta = new Button("Salvesta seis"); //nupp alustamiseks
+        final Button salvesta = new Button("Salvesta seis"); //nupp kasutaja skoori seisu salvestamiseks
         salvesta.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:hotpink;" +
                 "-fx-background-color: gold; -fx-text-fill:black; -fx-font-size: 16;");
         pane1.getChildren().add(salvesta);
@@ -107,6 +110,7 @@ public class Numbristik {
         stack1.getChildren().addAll(PILT1, border1);
         Scene stseen1 = new Scene(stack1);
 
+        //nupule vajutades lisatakse listi uus kasutaja (luuakse uus klassi Kasutaja objekt)
         lisa.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 if(!uus_kasutaja.getText().equals("")) {
@@ -172,7 +176,6 @@ public class Numbristik {
 
         exit.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                System.out.println("lõpeta nupu tegevuses lisan: "+tegevlist.get(tegevlist.size()-1));
                 nimed.add(tegevlist.get(tegevlist.size()-1));
                 newStage.close();
             }

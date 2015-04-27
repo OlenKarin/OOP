@@ -1,3 +1,5 @@
+
+//selle klassi objektid moodustavadki foneetilise tähestiku
 public class Foneetiline {
     private String T;
     private int N;
