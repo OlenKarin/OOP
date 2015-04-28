@@ -60,7 +60,6 @@ public class FxPeaklass extends Application {
         harjutama.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 Scene stseen3 = new Scene(harjutama(stseen1, primaryStage));
-
                 primaryStage.setScene(stseen3);
             }
         });
@@ -69,15 +68,14 @@ public class FxPeaklass extends Application {
 
         opetus.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                FlowPane group = new FlowPane();
-                Text a = new Text("õpetuse tekst / pilt / asi");
-                Button menu = new Button("Menüü");
-                menu.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 22;");
-                //menu.setTranslateX(280);
-                //menu.setTranslateY(20);
-                //menu.setAlignment(Pos.BOTTOM_RIGHT);
-                group.getChildren().addAll(a, menu);
+                try {
+                    primaryStage.setScene(OpetusTest.opetuse_stseen(primaryStage, stseen1));
+                }catch (Exception e){
+                    System.out.println("Error");
+                }
 
+
+/*
 
                 System.out.println("TASE 1 Harjutame foneetilist tähestikku!" + "\n" +
                         "Kui soovite harjutamise lõpetada, siis trükkige EXIT! :)");
@@ -101,14 +99,8 @@ public class FxPeaklass extends Application {
                         "Kui enam harjutada ei soovi, siis sisesta 0.");
 
 
-                Scene stseen2 = new Scene(group);
-                primaryStage.setScene(stseen2);
 
-                menu.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    public void handle(MouseEvent me) {
-                        primaryStage.setScene(stseen1);
-                    }
-                });
+                });*/
             }
         });
 
