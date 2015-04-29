@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +23,8 @@ public class FxPeaklass extends Application {
     @Override
     public void start(final Stage primaryStage) {
 
+
+        primaryStage.setTitle("M E M O");
 
         //kõige esimene stseen, kus saab minna õpetusse või harjutama-----------------------------------------------
         StackPane pane = new StackPane();
