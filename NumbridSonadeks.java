@@ -58,7 +58,7 @@ public class NumbridSonadeks {
         BorderPane border = new BorderPane();
         border.setCenter(pane);
 
-        Image pilt = new Image("file:siigrii.png");
+        Image pilt = new Image("file:src/siigrii.png");
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());
@@ -147,7 +147,7 @@ public class NumbridSonadeks {
         BorderPane border = new BorderPane();
         border.setCenter(pane);
 
-        Image pilt = new Image("file:puu.png");
+        Image pilt = new Image("file:src/puu.png");
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());
@@ -263,7 +263,7 @@ public class NumbridSonadeks {
         pane.setSpacing(30);
         border.setCenter(pane);
 
-        Image pilt = new Image("file:sun.png");//lisan taustapildi
+        Image pilt = new Image("file:src/sun.png");//lisan taustapildi
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(primaryStage.getHeight());
         PILT.setFitHeight(primaryStage.getWidth());

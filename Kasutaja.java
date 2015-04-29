@@ -32,7 +32,7 @@ public class Kasutaja implements Serializable{
     //meetod kasutaja tulemuse salvestamiseks logifaili
     public static void kirjutaLogisse(ObservableList<Kasutaja> a)throws IOException{
 
-        FileOutputStream fout = new FileOutputStream("kasutajad.txt");
+        FileOutputStream fout = new FileOutputStream("src/kasutajad.txt");
         ObjectOutputStream out = new ObjectOutputStream(fout);
         for(Kasutaja elem : a ) {
             out.writeObject(elem);
@@ -42,7 +42,7 @@ public class Kasutaja implements Serializable{
     }
     //meetod kasutaja tulemuste lugemiseks logifailist
     public static ArrayList<Kasutaja> loeLogist(ArrayList<Kasutaja> list)throws IOException, ClassNotFoundException{
-        FileInputStream in = new FileInputStream("kasutajad.txt");
+        FileInputStream in = new FileInputStream("src/kasutajad.txt");
         ObjectInputStream objectIn = new ObjectInputStream(in);
         while(true) {
             try {

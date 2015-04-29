@@ -51,7 +51,7 @@ public class Numbristik {
         pane1.setSpacing(15);
         border1.setCenter(pane1);
 
-        Image pilt1 = new Image("file:roosa.png");//lisan taustapildi
+        Image pilt1 = new Image("file:src/roosa.png");//lisan taustapildi
         ImageView PILT1 = new ImageView(pilt1);
 
         Button menu = new Button("Menüü");//nupp menüüsse tagasi minemiseks
@@ -146,7 +146,7 @@ public class Numbristik {
         exit.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-size: 22;");
         pane2.getChildren().add(exit);
 
-        Image pilt2 = new Image("file:mullid.png");
+        Image pilt2 = new Image("file:src/mullid.png");
         ImageView PILT2 = new ImageView(pilt2);
         stack2.getChildren().addAll(PILT2, border2);
         final Scene stseen2 = new Scene(stack2);

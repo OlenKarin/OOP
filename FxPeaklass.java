@@ -37,7 +37,7 @@ public class FxPeaklass extends Application {
         boarder1.setCenter(tile);
 
 
-        Image pilt = new Image("file:motleja.png");
+        Image pilt = new Image("file:src/motleja.png");
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(stseen1.getHeight());
         PILT.setFitHeight(stseen1.getWidth());
@@ -117,7 +117,7 @@ public class FxPeaklass extends Application {
         box.setAlignment(Pos.CENTER);
         border.setCenter(box);
 
-        Image pilt = new Image("file:lehed.png");//tausta lisamine
+        Image pilt = new Image("file:src/lehed.png");//tausta lisamine
         ImageView PILT = new ImageView(pilt);
         PILT.setFitHeight(stseen1.getHeight());
         PILT.setFitHeight(stseen1.getWidth());
