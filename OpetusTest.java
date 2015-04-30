@@ -1,15 +1,28 @@
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyEvent;
+
+import javafx.util.Duration;
+
+import java.awt.*;
+import java.util.ArrayList;
+
 
 /*
  * Created by merka on 21.04.2015.
@@ -18,6 +31,15 @@ import javafx.stage.Stage;
 public class OpetusTest{
 
     public static Scene opetuse_stseen(final Stage primaryStage, final Scene stseen1) throws Exception {
+
+
+        StackPane pane1 = new StackPane();
+        StackPane pane2 = new StackPane();
+        StackPane pane3 = new StackPane();
+        StackPane pane4 = new StackPane();
+        StackPane pane5 = new StackPane();
+        StackPane pane6 = new StackPane();
+        StackPane pane7 = new StackPane();
 
         HBox tile1 = new HBox();
         HBox tile2 = new HBox();
@@ -43,6 +65,9 @@ public class OpetusTest{
         ImageView im6 = new ImageView(image6);
         ImageView im7 = new ImageView(image7);
 
+        //im1.setFitHeight(primaryStage.getHeight());
+        //im1.setFitWidth(primaryStage.getWidth());
+
         Group root1 = new Group();
         Group root2 = new Group();
         Group root3 = new Group();
@@ -60,8 +85,7 @@ public class OpetusTest{
         final Scene scene7 = new Scene(root7);
 
 
-        tile1.setSpacing(780);
-        tile1.setAlignment(Pos.BOTTOM_CENTER);
+
 
         Button back1 = new Button(); //nupp edasi minemiseks
         back1.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
@@ -89,18 +113,20 @@ public class OpetusTest{
 
         });
 
-        tile1.getChildren().add(back1);
-        tile1.getChildren().add(next1);
+        tile1.setAlignment(Pos.BOTTOM_CENTER);
+        tile1.getChildren().addAll(back1, next1);
+        tile1.setSpacing(700);
 
-        root1.getChildren().addAll(im1,tile1);
+        //pane1.setPrefWidth(primaryStage.getWidth());
+        //pane1.setPrefHeight(primaryStage.getHeight());
 
 
+        pane1.getChildren().addAll(im1,tile1);
 
-        tile2.setSpacing(780);
-        tile2.setAlignment(Pos.BOTTOM_CENTER);
 
-        Button menu = new Button("Menüü"); //nupp menüüsse minemiseks------------------------------------------------
-        menu.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
+        root1.getChildren().add(pane1);
+
+
 
 
         Button back2 = new Button(); //nupp edasi minemiseks
@@ -129,13 +155,16 @@ public class OpetusTest{
 
         });
 
-        tile2.getChildren().add(back2);
-        tile2.getChildren().add(next2);
-        root2.getChildren().addAll(im2, tile2);
+        tile2.setSpacing(700);
+        tile2.setAlignment(Pos.BOTTOM_CENTER);
+        tile2.getChildren().addAll(back2, next2);
+
+        pane2.getChildren().addAll(im2, tile2);
+
+        root2.getChildren().add(pane2);
 
 
-        tile3.setSpacing(780);
-        tile3.setAlignment(Pos.BOTTOM_CENTER);
+
 
         Button back3 = new Button(); //nupp edasi minemiseks
         back3.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
@@ -163,14 +192,17 @@ public class OpetusTest{
 
         });
 
-        tile3.getChildren().add(back3);
-        tile3.getChildren().add(next3);
-        root3.getChildren().addAll(im3, tile3);
+        tile3.setSpacing(700);
+        tile3.setAlignment(Pos.BOTTOM_CENTER);
+        tile3.getChildren().addAll(back3, next3);
+
+        pane3.getChildren().addAll(im3, tile3);
+
+        root3.getChildren().add(pane3);
 
 
 
-        tile4.setSpacing(780);
-        tile4.setAlignment(Pos.BOTTOM_CENTER);
+
 
         Button back4 = new Button(); //nupp edasi minemiseks
         back4.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
@@ -198,14 +230,15 @@ public class OpetusTest{
 
         });
 
-        tile4.getChildren().add(back4);
-        tile4.getChildren().add(next4);
-        root4.getChildren().addAll(im4, tile4);
+        tile4.setSpacing(700);
+        tile4.setAlignment(Pos.BOTTOM_CENTER);
+        tile4.getChildren().addAll(back4, next4);
+
+        pane4.getChildren().addAll(im4, tile4);
+
+        root4.getChildren().add(pane4);
 
 
-
-        tile5.setSpacing(780);
-        tile5.setAlignment(Pos.BOTTOM_CENTER);
 
         Button back5 = new Button(); //nupp edasi minemiseks
         back5.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
@@ -233,14 +266,18 @@ public class OpetusTest{
 
         });
 
-        tile5.getChildren().add(back5);
-        tile5.getChildren().add(next5);
-        root5.getChildren().addAll(im5, tile5);
+        tile5.setSpacing(700);
+        tile5.setAlignment(Pos.BOTTOM_CENTER);
+        tile5.getChildren().addAll(back5, next5);
+
+        pane5.getChildren().addAll(im5, tile5);
+
+        root5.getChildren().add(pane5);
 
 
 
-        tile6.setSpacing(780);
-        tile6.setAlignment(Pos.BOTTOM_CENTER);
+
+
 
         Button back6 = new Button(); //nupp edasi minemiseks
         back6.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
@@ -268,59 +305,43 @@ public class OpetusTest{
 
         });
 
-        tile6.getChildren().add(back6);
-        tile6.getChildren().add(next6);
-        root6.getChildren().addAll(im6, tile6);
+        tile6.setSpacing(700);
+        tile6.setAlignment(Pos.BOTTOM_CENTER);
+        tile6.getChildren().addAll(back6, next6);
+
+        pane6.getChildren().addAll(im6, tile6);
+
+        root6.getChildren().add(pane6);
 
 
 
-        tile7.setSpacing(780);
-        tile7.setAlignment(Pos.BOTTOM_CENTER);
-
-        Button back7 = new Button(); //nupp edasi minemiseks
-        back7.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
-        back7.setText(" <- ");
-        back7.setAlignment(Pos.BOTTOM_LEFT);
-        back7.setOnAction(new EventHandler<ActionEvent>() {
-
-            public void handle(ActionEvent event) {
-                primaryStage.setScene(scene6);
-            }
 
 
-        });
-
-        Button next7 = new Button(); //nupp tagasi minemiseks
-        next7.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
-        next7.setText(" -> ");
-        next7.setAlignment(Pos.BOTTOM_RIGHT);
-        next7.setOnAction(new EventHandler<ActionEvent>() {
-
-            public void handle(ActionEvent event) {
-                primaryStage.setScene(scene1);
-            }
-
-
-        });
-
-        tile7.getChildren().add(back7);
-        tile7.getChildren().add(next7);
-        root7.getChildren().addAll(im7, tile7, menu);
-
-
-        //menüü nupule vajutades minnakse menüüsse tagasi
+        Button menu = new Button("Menüü"); //nupp menüüsse minemiseks------------------------------------------------
+        menu.setStyle("-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-font-size: 30;");
+        menu.setAlignment(Pos.BOTTOM_CENTER);
         menu.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 primaryStage.setWidth(500);
                 primaryStage.setHeight(500);
                 primaryStage.setScene(stseen1);
             }
-            });
+        });
+
+
+        tile7.getChildren().add(menu);
+        tile7.setAlignment(Pos.BOTTOM_CENTER);
+
+        pane7.getChildren().addAll(im7, tile7);
+
+        root7.getChildren().add(pane7);
+
 
 
             primaryStage.setScene(scene1);
-            primaryStage.setHeight(700);
-            primaryStage.setWidth(993);
+            primaryStage.setHeight(750);
+            primaryStage.setWidth(1009);
+
         primaryStage.show();
 
         return scene1;
